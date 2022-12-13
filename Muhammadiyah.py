@@ -5,3 +5,4 @@ with urllib.request.urlopen("https://id.wikipedia.org/wiki/Muhammadiyah") as res
 label = tk.Label(root, text=file)
 label.pack()
 root.mainloop()
+print(file)
