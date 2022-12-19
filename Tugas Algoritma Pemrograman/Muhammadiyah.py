@@ -15,20 +15,21 @@ canvas.pack()
 searchBar = tk.Entry(root)
 canvas.create_window(360,17, window=searchBar)
 
-url = "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/"
 
-requset = urllib.request.Request(url)
-response = urllib.request.urlopen(requset)
-resData = response.read()
 
 
 class content():
     def text():
+        url = f"https://muhammadiyah.or.id/?s={searchBar.get()}"
+
+        requset = urllib.request.Request(url)
+        response = urllib.request.urlopen(requset)
+        resData = response.read()
+
         urlText = re.findall(r"<p>(.*?)</p>",str(resData))
         for x in urlText:
             r = x
-            sc = tk.Label(root, text=r)
-            sc.pack()
+            sc.config(text=r)
     # def showContent():
     #     sc = tk.Label(root, text="apa ya")
 
@@ -45,6 +46,7 @@ class barMenu():
         label.pack()
     def userInput():
         v = 3
+
 class link():
     def web():
         webbrowser.open_new_tab("https://muhammadiyah.or.id/")
@@ -103,7 +105,11 @@ menu.add_cascade(label="Social Media", menu=sm)
 
 root.config(menu=menu)
 
+
 searchButton = tk.Button(root, text="Search", command=content.text)
 searchButton.pack()
+
+sc = tk.Label(root, text="")
+sc.pack()
 
 root.mainloop()
