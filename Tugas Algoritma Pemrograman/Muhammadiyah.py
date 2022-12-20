@@ -1,34 +1,42 @@
-import tkinter as tk,urllib.request,urllib.parse,webbrowser,re, html2text
-
+import tkinter as tk,urllib.request,urllib.parse,webbrowser, html2text
+from bs4 import BeautifulSoup
 root = tk.Tk()
+
 root.geometry("1280x720")
 root.title("Muhammadiyah")
 root.configure(bg = "#227C70")
-label = tk.Label(root,text= "Semua pencarian anda ada disini",font =("Roboto",16),bg="#227C70")
+label = tk.Label(root,text= "Masukan Keyword",font =("Roboto",16),bg="#227C70")
 label.pack()
 menu = tk.Menu(root)
 
-canvas = tk.Canvas(root, width=720, height=34)
-canvas.configure(bg="green")
+canvas = tk.Canvas(root, width=100, height=20)
+canvas.configure(bg="white")
 canvas.pack()
 
-searchBar = tk.Entry(root)
-canvas.create_window(360,17, window=searchBar)
+stringVar = tk.StringVar()
+searchBar = tk.Entry(canvas, textvariable=stringVar)
+searchBar.pack(side="left")
+
 
 url = "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/"
 
-requset = urllib.request.Request(url)
-response = urllib.request.urlopen(requset)
-resData = response.read()
+api = {"pemerintah" : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/"
+}
 
-
-class content():
-    def text():
-        urlText = re.findall(r"<p>(.*?)</p>",str(resData))
-        tupleText = str(tuple(urlText))
-        txt = html2text.html2text(tupleText)
-        sc = tk.Label(root, text=txt)
-        sc.pack()
+def getSearch():
+    get = stringVar.get()
+    requset = urllib.request.Request(api[get])
+    response = urllib.request.urlopen(requset)
+    resData = response.read()
+    parsedhtml = BeautifulSoup(resData, "html.parser")
+    urlText = parsedhtml.findAll("p")
+    tupleText = str(tuple(urlText))
+    txt = html2text.html2text(tupleText)
+    sc = tk.Label(root, text=txt, fg="white", font="red")
+    sc.configure(bg="#227C70")
+    sc.pack()
+searchButton = tk.Button(canvas, text="Search", command=getSearch)
+searchButton.pack()
 
 class barMenu():
     def close():
@@ -99,8 +107,5 @@ sm.add_command(label="Facebook",command=link.fb)
 menu.add_cascade(label="Social Media", menu=sm)
 
 root.config(menu=menu)
-
-searchButton = tk.Button(root, text="Search", command=content.text)
-searchButton.pack()
 
 root.mainloop()
