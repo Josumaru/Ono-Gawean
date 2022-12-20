@@ -25,8 +25,8 @@ class content():
         requset = urllib.request.Request(url)
         response = urllib.request.urlopen(requset)
         resData = response.read()
-
         urlText = re.findall(r"<p>(.*?)</p>",str(resData))
+
         for x in urlText:
             r = x
             sc.config(text=r)
