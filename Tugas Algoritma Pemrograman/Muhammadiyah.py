@@ -1,4 +1,4 @@
-import tkinter as tk,urllib.request,urllib.parse,webbrowser,re
+import tkinter as tk,urllib.request,urllib.parse,webbrowser,re, html2text
 
 root = tk.Tk()
 root.geometry("1280x720")
@@ -15,7 +15,7 @@ canvas.pack()
 searchBar = tk.Entry(root)
 canvas.create_window(360,17, window=searchBar)
 
-url = "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/"
+url = "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/"
 
 requset = urllib.request.Request(url)
 response = urllib.request.urlopen(requset)
@@ -25,14 +25,11 @@ resData = response.read()
 class content():
     def text():
         urlText = re.findall(r"<p>(.*?)</p>",str(resData))
-        for x in urlText:
-            r = x
-            sc = tk.Label(root, text=r)
-            sc.pack()
-    # def showContent():
-    #     sc = tk.Label(root, text="apa ya")
+        tupleText = str(tuple(urlText))
+        txt = html2text.html2text(tupleText)
+        sc = tk.Label(root, text=txt)
+        sc.pack()
 
-    
 class barMenu():
     def close():
         """Exit command"""
