@@ -1,5 +1,5 @@
 import tkinter as tk,urllib.request,urllib.parse,webbrowser,re
-
+from bs4 import BeautifulSoup
 root = tk.Tk()
 root.geometry("1280x720")
 root.title("Muhammadiyah")
@@ -20,16 +20,18 @@ canvas.create_window(360,17, window=searchBar)
 
 class content():
     def text():
-        url = f"https://muhammadiyah.or.id/?s={searchBar.get()}"
+        url = "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/"
 
         requset = urllib.request.Request(url)
         response = urllib.request.urlopen(requset)
         resData = response.read()
-        urlText = re.findall(r"<p>(.*?)</p>",str(resData))
-
+        # urlText = re.findall(r"<p>(.*?)</p>",str(resData))
+        soup = BeautifulSoup(resData, 'html.parser')
+        urlText = soup.findAll('p')
         for x in urlText:
-            r = x
-            sc.config(text=r)
+            sc = tk.Label(text=x)
+            print(x)
+            sc.pack()
     # def showContent():
     #     sc = tk.Label(root, text="apa ya")
 
@@ -109,7 +111,6 @@ root.config(menu=menu)
 searchButton = tk.Button(root, text="Search", command=content.text)
 searchButton.pack()
 
-sc = tk.Label(root, text="")
-sc.pack()
+
 
 root.mainloop()
