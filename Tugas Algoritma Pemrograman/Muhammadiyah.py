@@ -4,6 +4,8 @@ root = tk.Tk()
 
 root.geometry("1280x720")
 root.title("Muhammadiyah")
+
+
 root.configure(bg = "#227C70")
 label = tk.Label(root,text= "Masukan Keyword",font =("Roboto",16),bg="#227C70")
 label.pack()
@@ -17,6 +19,21 @@ stringVar = tk.StringVar()
 searchBar = tk.Entry(canvas, textvariable=stringVar)
 searchBar.pack(side="left")
 
+
+
+url = "https://muhammadiyah.or.id/?s="
+
+
+
+
+
+
+
+
+
+
+
+
 api = {
 "pemerintah"    : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/",
 "nasional"      : "https://muhammadiyah.or.id/muhammadiyah-terus-bersikap-kritis-terhadap-kebijakan-nasional-namun-tidak-bersifat-oposan/",
@@ -26,9 +43,12 @@ api = {
 "arab"          : "https://muhammadiyah.or.id/pengaruh-bahasa-arab-terhadap-lahirnya-era-pencerahan-di-eropa/",
 "hutang"        : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
 "riba"          : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
-"dakwah"        : "https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/"'
+"dakwah"        : "https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/"
 
 }
+
+
+scr = tk.Scrollbar(root).pack(side="right",fill="y")
 
 def getSearch():
     get = stringVar.get()
@@ -45,6 +65,7 @@ def getSearch():
 searchButton = tk.Button(canvas, text="Search", command=getSearch)
 searchButton.pack()
 
+
 class barMenu():
     def close():
         """Exit command"""
@@ -55,8 +76,8 @@ class barMenu():
         overlay.title("About")
         label = tk.Label(overlay,text="Created by Ono-Gawean\n\nMember:\n1.\n2.\n3.\n4.\n5.\n6.\n7.\n8.\n9.\n10.")
         label.pack()
-    def userInput():
-        v = 3
+    # def userInput():
+    #     v = 3
 class link():
     def web():
         webbrowser.open_new_tab("https://muhammadiyah.or.id/")
