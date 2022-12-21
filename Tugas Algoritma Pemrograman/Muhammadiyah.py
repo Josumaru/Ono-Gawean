@@ -1,38 +1,71 @@
-import tkinter as tk,urllib.request,urllib.parse,webbrowser,re
-import jam_sholat
+import tkinter as tk,urllib.request,urllib.parse,webbrowser, html2text
+from bs4 import BeautifulSoup
 root = tk.Tk()
+
 root.geometry("1280x720")
 root.title("Muhammadiyah")
+
+
 root.configure(bg = "#227C70")
-label = tk.Label(root,text= "Semua pencarian anda ada disini",font =("Roboto",16),bg="#227C70")
+label = tk.Label(root,text= "Masukan Keyword",font =("Roboto",16),bg="#227C70")
 label.pack()
 menu = tk.Menu(root)
 
-canvas = tk.Canvas(root, width=720, height=34)
-canvas.configure(bg="green")
+canvas = tk.Canvas(root, width=100, height=20)
+canvas.configure(bg="white")
 canvas.pack()
 
-searchBar = tk.Entry(root)
-canvas.create_window(360,17, window=searchBar)
-
-url = "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/"
-
-requset = urllib.request.Request(url)
-response = urllib.request.urlopen(requset)
-resData = response.read()
+stringVar = tk.StringVar()
+searchBar = tk.Entry(canvas, textvariable=stringVar)
+searchBar.pack(side="left")
 
 
-class content():
-    def text():
-        urlText = re.findall(r"<p>(.*?)</p>",str(resData))
-        for x in urlText:
-            r = x
-            sc = tk.Label(root, text=r)
-            sc.pack()
-    # def showContent():
-    #     sc = tk.Label(root, text="apa ya")
 
-    
+url = "https://muhammadiyah.or.id/?s="
+
+
+
+
+
+
+
+
+
+
+
+
+api = {
+"pemerintah"    : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/",
+"nasional"      : "https://muhammadiyah.or.id/muhammadiyah-terus-bersikap-kritis-terhadap-kebijakan-nasional-namun-tidak-bersifat-oposan/",
+"pendidikan"    : "https://muhammadiyah.or.id/haedar-sampaikan-catatan-untuk-arah-pendidikan-nasional/",
+"pernikahan"    : "https://muhammadiyah.or.id/hukum-nikah-beda-agama-majelis-tarjih-haram/",
+"kuburan"       : "https://muhammadiyah.or.id/di-masjid-ada-kuburan-bolehkah-dijadikan-tempat-salat-2/",
+"arab"          : "https://muhammadiyah.or.id/pengaruh-bahasa-arab-terhadap-lahirnya-era-pencerahan-di-eropa/",
+"hutang"        : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
+"riba"          : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
+"dakwah"        : "https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/"
+
+}
+
+
+scr = tk.Scrollbar(root).pack(side="right",fill="y")
+
+def getSearch():
+    get = stringVar.get()
+    requset = urllib.request.Request(api[get])
+    response = urllib.request.urlopen(requset)
+    resData = response.read()
+    parsedhtml = BeautifulSoup(resData, "html.parser")
+    urlText = parsedhtml.findAll("p")
+    tupleText = str(tuple(urlText))
+    txt = html2text.html2text(tupleText)
+    sc = tk.Label(root, text=txt, fg="white", font="red")
+    sc.configure(bg="#227C70")
+    sc.pack()
+searchButton = tk.Button(canvas, text="Search", command=getSearch)
+searchButton.pack()
+
+
 class barMenu():
     def close():
         """Exit command"""
@@ -43,8 +76,8 @@ class barMenu():
         overlay.title("About")
         label = tk.Label(overlay,text="Created by Ono-Gawean\n\nMember:\n1.\n2.\n3.\n4.\n5.\n6.\n7.\n8.\n9.\n10.")
         label.pack()
-    def userInput():
-        v = 3
+    # def userInput():
+    #     v = 3
 class link():
     def web():
         webbrowser.open_new_tab("https://muhammadiyah.or.id/")
@@ -83,7 +116,7 @@ menu.add_cascade(label="News", menu=news)
 
 # Jadwal Sholat
 sholat = tk.Menu(menu, tearoff=0)
-sholat.add_command(label="Subuh", command=jam_sholat.shubuh)
+sholat.add_command(label="Subuh")
 sholat.add_command(label="Dzuhur")
 sholat.add_command(label="Ashar")
 sholat.add_command(label="Ashar")
@@ -102,8 +135,5 @@ sm.add_command(label="Facebook",command=link.fb)
 menu.add_cascade(label="Social Media", menu=sm)
 
 root.config(menu=menu)
-
-searchButton = tk.Button(root, text="Search", command=content.text)
-searchButton.pack()
 
 root.mainloop()
