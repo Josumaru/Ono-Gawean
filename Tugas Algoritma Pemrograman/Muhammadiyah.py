@@ -65,6 +65,7 @@ def getSearch():
 searchButton = tk.Button(canvas, text="Search", command=getSearch)
 searchButton.pack()
 
+
 class barMenu():
     def close():
         """Exit command"""
@@ -75,8 +76,7 @@ class barMenu():
         overlay.title("About")
         label = tk.Label(overlay,text="Created by Ono-Gawean\n\nMember:\n1.\n2.\n3.\n4.\n5.\n6.\n7.\n8.\n9.\n10.")
         label.pack()
-    # def userInput():
-    #     v = 3
+
 class link():
     def web():
         webbrowser.open_new_tab("https://muhammadiyah.or.id/")
