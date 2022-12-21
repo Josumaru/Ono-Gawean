@@ -12,4 +12,4 @@ def penghitungWaktu(t):
 
 t = input("masukkan waktu : ")
 
-penghitungWaktu5 (int(t))
+penghitungWaktu (int(t))
