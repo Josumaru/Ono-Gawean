@@ -17,10 +17,17 @@ stringVar = tk.StringVar()
 searchBar = tk.Entry(canvas, textvariable=stringVar)
 searchBar.pack(side="left")
 
+api = {
+"pemerintah"    : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/",
+"nasional"      : "https://muhammadiyah.or.id/muhammadiyah-terus-bersikap-kritis-terhadap-kebijakan-nasional-namun-tidak-bersifat-oposan/",
+"pendidikan"    : "https://muhammadiyah.or.id/haedar-sampaikan-catatan-untuk-arah-pendidikan-nasional/",
+"pernikahan"    : "https://muhammadiyah.or.id/hukum-nikah-beda-agama-majelis-tarjih-haram/",
+"kuburan"       : "https://muhammadiyah.or.id/di-masjid-ada-kuburan-bolehkah-dijadikan-tempat-salat-2/",
+"arab"          : "https://muhammadiyah.or.id/pengaruh-bahasa-arab-terhadap-lahirnya-era-pencerahan-di-eropa/",
+"hutang"        : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
+"riba"          : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
+"dakwah"        : "https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/"'
 
-url = "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/"
-
-api = {"pemerintah" : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/"
 }
 
 def getSearch():
