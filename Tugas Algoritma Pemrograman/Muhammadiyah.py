@@ -1,4 +1,4 @@
-import tkinter as tk,urllib.request,urllib.parse,webbrowser, html2text
+import tkinter as tk,urllib.request,urllib.parse,webbrowser, html2text,jam_sholat
 from bs4 import BeautifulSoup
 root = tk.Tk()
 
@@ -116,12 +116,11 @@ menu.add_cascade(label="News", menu=news)
 
 # Jadwal Sholat
 sholat = tk.Menu(menu, tearoff=0)
-sholat.add_command(label="Subuh")
-sholat.add_command(label="Dzuhur")
-sholat.add_command(label="Ashar")
-sholat.add_command(label="Ashar")
-sholat.add_command(label="Magrib")
-sholat.add_command(label="Isya")
+sholat.add_command(label="Subuh",command=jam_sholat.shubuh)
+sholat.add_command(label="Dzuhur", command=jam_sholat.zhuhr)
+sholat.add_command(label="Ashar",command=jam_sholat.ashr)
+sholat.add_command(label="Magrib",command=jam_sholat.maghrib)
+sholat.add_command(label="Isya",command=jam_sholat.isya)
 menu.add_cascade(label="Jadwal Sholat", menu=sholat)
 root.config(menu=menu)
 

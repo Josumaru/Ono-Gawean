@@ -7,50 +7,55 @@ from time import strftime
 my_font = ('times', 52, 'bold')  # display size and style
 
 # mengolah data jadwal sholat
-data = pandas.read_csv(r'C:\Users\ACER\Documents\GitHub\Ono-Gawean\Tugas Algoritma Pemrograman\Jadwal Sholat Yogyakarta, Daerah Istimewa Yogyakarta, Indonesia - Tahun 2021 M.csv').to_dict()
+data = pandas.read_csv('Jadwal Sholat Yogyakarta, Daerah Istimewa Yogyakarta, Indonesia - Tahun 2021 M.csv').to_dict()
 df = pandas.DataFrame(data)
+tanggal = strftime("%d/%m")
 
 
-
-def shubuh(data=df):
+def shubuh(data=df, tanggal=tanggal):
     shubuh_dict = {
         row.Tanggal:row.Shubuh for (index, row) in df.iterrows()
     }
-    tanggal= strftime("%d/%m")
     waktu_sholat = shubuh_dict[f"{tanggal}/2021"]
     sholat = 'shubuh'
     jamsekarang(waktu_sholat, sholat)
 
     
-def zhuhr(data=df):
+def zhuhr(data=df, tanggal=tanggal):
     zhuhr_dict = {
         row.Tanggal:row.Zhuhr for (index, row) in df.iterrows()
     }
-    jamsekarang()
+    waktu_sholat = zhuhr_dict[f"{tanggal}/2021"]
+    sholat = 'zhuhr'
+    jamsekarang(waktu_sholat, sholat)
 
-def ashr(data=df):
+def ashr(data=df, tanggal=tanggal):
     ashr_dict = {
-        row.Tanggal:row.Ashr for (index, row) in df.iterrows()
+        row.Tanggal:row.Ashar for (index, row) in df.iterrows()
     }
-    jamsekarang()
+    waktu_sholat = ashr_dict[f"{tanggal}/2021"]
+    sholat = 'ashr'
+    jamsekarang(waktu_sholat, sholat)
 
-def maghrib(data=df):
+def maghrib(data=df, tanggal=tanggal):
     maghrib_dict = {
-        row.Tanggal:row.Shubuh for (index, row) in df.iterrows()
+        row.Tanggal:row.Maghrib for (index, row) in df.iterrows()
     }
-    jamsekarang()
+    waktu_sholat = maghrib_dict[f"{tanggal}/2021"]
+    sholat = 'maghrib'
+    jamsekarang(waktu_sholat, sholat)
 
-def isya(data=df):
+def isya(data=df, tanggal=tanggal):
     isya_dict = {
         row.Tanggal:row.Isya for (index, row) in df.iterrows()
     }
-    jamsekarang()
+    waktu_sholat = isya_dict[f"{tanggal}/2021"]
+    sholat = 'isya'
+    jamsekarang(waktu_sholat, sholat)
 
 def jamsekarang(waktu_sholat, sholat):
     my_w = tk.Tk()
     my_w.geometry("405x300")
-
-
     def my_time():
         time_string = strftime('%H:%M:%S %p')  # time format
         l1.config(text=time_string)
