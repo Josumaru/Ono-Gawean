@@ -1,5 +1,5 @@
 import tkinter as tk,urllib.request,urllib.parse,webbrowser,re
-
+import jam_sholat
 root = tk.Tk()
 root.geometry("1280x720")
 root.title("Muhammadiyah")
@@ -83,7 +83,7 @@ menu.add_cascade(label="News", menu=news)
 
 # Jadwal Sholat
 sholat = tk.Menu(menu, tearoff=0)
-sholat.add_command(label="Subuh")
+sholat.add_command(label="Subuh", command=jam_sholat.shubuh)
 sholat.add_command(label="Dzuhur")
 sholat.add_command(label="Ashar")
 sholat.add_command(label="Ashar")
