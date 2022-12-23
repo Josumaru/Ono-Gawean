@@ -1,4 +1,4 @@
-import tkinter as tk,urllib.request,urllib.parse,webbrowser, html2text,jam_sholat
+import tkinter as tk,urllib.request,urllib.parse,webbrowser, html2text,jam_sholat,re
 from bs4 import BeautifulSoup
 root = tk.Tk()
 
@@ -21,7 +21,34 @@ searchBar.pack(side="left")
 
 
 
-url = "https://muhammadiyah.or.id/?s="
+url = f"https://muhammadiyah.or.id/?s={searchBar.get()}"
+def getSearch():
+    get = stringVar.get()
+    requset = urllib.request.Request(url)
+    response = urllib.request.urlopen(requset)
+    resData = response.read()
+    parsedhtml = BeautifulSoup(resData, "html.parser")
+    urlText = str(parsedhtml.findAll())
+    with open('link data', mode='w') as link:
+        link.write(urlText)
+    with open('link data', mode='r') as link:
+        a = link.read()
+        search_link = re.findall(r'content=[\'"]?([^\'">]+)', str(a))
+        print(search_link)
+
+    #     print(search_link)
+    # search_requset = urllib.request.Request(str(search_link))
+    # search_response = urllib.request.urlopen(search_requset)
+    # search_resData = search_response.read()
+    # search_parsedhtml = BeautifulSoup(search_resData, "html.parser")
+    # search_urlText = search_parsedhtml.findAll("p")
+    # search_tupleText = str(tuple(search_urlText))
+    # txt = html2text.html2text(search_tupleText)
+    # sc = tk.Label(root, text=txt, fg="white", font="red")
+    # sc.configure(bg="#227C70")
+    # sc.pack()
+searchButton = tk.Button(canvas, text="Search", command=getSearch)
+searchButton.pack()
 
 
 
@@ -34,36 +61,36 @@ url = "https://muhammadiyah.or.id/?s="
 
 
 
-api = {
-"pemerintah"    : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/",
-"nasional"      : "https://muhammadiyah.or.id/muhammadiyah-terus-bersikap-kritis-terhadap-kebijakan-nasional-namun-tidak-bersifat-oposan/",
-"pendidikan"    : "https://muhammadiyah.or.id/haedar-sampaikan-catatan-untuk-arah-pendidikan-nasional/",
-"pernikahan"    : "https://muhammadiyah.or.id/hukum-nikah-beda-agama-majelis-tarjih-haram/",
-"kuburan"       : "https://muhammadiyah.or.id/di-masjid-ada-kuburan-bolehkah-dijadikan-tempat-salat-2/",
-"arab"          : "https://muhammadiyah.or.id/pengaruh-bahasa-arab-terhadap-lahirnya-era-pencerahan-di-eropa/",
-"hutang"        : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
-"riba"          : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
-"dakwah"        : "https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/"
-
-}
+# api = {
+# "pemerintah"    : "https://muhammadiyah.or.id/pemerintah-anggap-isu-strategis-kesalehan-digital-muhammadiyah-konstruktif-dengan-konstitusi/",
+# "nasional"      : "https://muhammadiyah.or.id/muhammadiyah-terus-bersikap-kritis-terhadap-kebijakan-nasional-namun-tidak-bersifat-oposan/",
+# "pendidikan"    : "https://muhammadiyah.or.id/haedar-sampaikan-catatan-untuk-arah-pendidikan-nasional/",
+# "pernikahan"    : "https://muhammadiyah.or.id/hukum-nikah-beda-agama-majelis-tarjih-haram/",
+# "kuburan"       : "https://muhammadiyah.or.id/di-masjid-ada-kuburan-bolehkah-dijadikan-tempat-salat-2/",
+# "arab"          : "https://muhammadiyah.or.id/pengaruh-bahasa-arab-terhadap-lahirnya-era-pencerahan-di-eropa/",
+# "hutang"        : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
+# "riba"          : "https://muhammadiyah.or.id/tiga-prinsip-pinjam-meminjam-dalam-islam/",
+# "dakwah"        : "https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/"
+#
+# }
 
 
 scr = tk.Scrollbar(root).pack(side="right",fill="y")
 
-def getSearch():
-    get = stringVar.get()
-    requset = urllib.request.Request(api[get])
-    response = urllib.request.urlopen(requset)
-    resData = response.read()
-    parsedhtml = BeautifulSoup(resData, "html.parser")
-    urlText = parsedhtml.findAll("p")
-    tupleText = str(tuple(urlText))
-    txt = html2text.html2text(tupleText)
-    sc = tk.Label(root, text=txt, fg="white", font="red")
-    sc.configure(bg="#227C70")
-    sc.pack()
-searchButton = tk.Button(canvas, text="Search", command=getSearch)
-searchButton.pack()
+# def getSearch():
+#     get = stringVar.get()
+#     requset = urllib.request.Request(api[get])
+#     response = urllib.request.urlopen(requset)
+#     resData = response.read()
+#     parsedhtml = BeautifulSoup(resData, "html.parser")
+#     urlText = parsedhtml.findAll("p")
+#     tupleText = str(tuple(urlText))
+#     txt = html2text.html2text(tupleText)
+#     sc = tk.Label(root, text=txt, fg="white", font="red")
+#     sc.configure(bg="#227C70")
+#     sc.pack()
+# searchButton = tk.Button(canvas, text="Search", command=getSearch)
+# searchButton.pack()
 
 
 class barMenu():
