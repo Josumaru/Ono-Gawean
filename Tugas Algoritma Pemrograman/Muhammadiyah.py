@@ -11,25 +11,22 @@ label = tk.Label(root,text= "Masukan Keyword",font =("Roboto",16),bg="#227C70")
 label.pack()
 menu = tk.Menu(root)
 
-canvas = tk.Canvas(root, width=100, height=20)
-canvas.configure(bg="white")
-canvas.pack()
-
+canvas = tk.Canvas(root)
+canvas.configure(bg="#227c70")
+canvas.pack(side="left",fill="both",expand=True)
+scrollBar= tk.Scrollbar(root,command=canvas.yview)
+scrollBar.pack(side="left",fill="both")
+frame = tk.Frame(canvas)
+frame.configure(bg="#227c70")
 stringVar = tk.StringVar()
+canvas.configure(yscrollcommand=scrollBar.set)
+canvas.create_window((0,0),window=frame,anchor="nw")
 searchBar = tk.Entry(canvas, textvariable=stringVar)
 searchBar.pack(side="left")
 
 
 
 url = "https://muhammadiyah.or.id/?s="
-
-
-
-
-
-
-
-
 
 
 
@@ -48,8 +45,6 @@ api = {
 }
 
 
-scr = tk.Scrollbar(root).pack(side="right",fill="y")
-
 def getSearch():
     get = stringVar.get()
     requset = urllib.request.Request(api[get])
@@ -59,11 +54,15 @@ def getSearch():
     urlText = parsedhtml.findAll("p")
     tupleText = str(tuple(urlText))
     txt = html2text.html2text(tupleText)
-    sc = tk.Label(root, text=txt, fg="white", font="red")
-    sc.configure(bg="#227C70")
-    sc.pack()
+    label = tk.Text(frame, yscrollcommand=scrollBar.set)
+    label.insert("end",txt)
+    #label.configure(bg="#227c70",foreground="white")
+    label.pack(side="left")
+
+
 searchButton = tk.Button(canvas, text="Search", command=getSearch)
 searchButton.pack()
+
 
 
 class barMenu():
@@ -76,8 +75,6 @@ class barMenu():
         overlay.title("About")
         label = tk.Label(overlay,text="Created by Ono-Gawean\n\nMember:\n1.\n2.\n3.\n4.\n5.\n6.\n7.\n8.\n9.\n10.")
         label.pack()
-    # def userInput():
-    #     v = 3
 class link():
     def web():
         webbrowser.open_new_tab("https://muhammadiyah.or.id/")
