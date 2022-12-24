@@ -1,18 +1,25 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Muhammadiyah</title>
-    <link rel="stylesheet" href="\sylesheet.css">
+    <link rel="stylesheet" href="{% static 'css/sylesheet.css' %}">
     <!-- Unduh Font Awesome di bawah -->
-    <link rel="stylesheet" href="/home/rattan/Desktop/Ono-Gawean/Tugas Algoritma Pemrograman/Django/sylesheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
-  
+  <style>
+    body{
+      background-image: url("{% static 'img/Edutorium-UMS-1124_waifu2x_art_noise1_scale.png' %}");
+    }
+  </style>
   <body>
     <header>
         <div class="container">
          <div class="header-left">
-           <img class="logo" src="/home/rattan/Desktop/Ono-Gawean/Tugas Algoritma Pemrograman/Django/imageedit_2_6229287158.png">
+           <img class="logo" src="{% static 'img/imageedit_2_6229287158.png' %}">
            
          </div>
          <div class="hcl">
@@ -36,9 +43,8 @@
               <input type="text" placeholder="Search..">
               <button type="submit">search</button>
             </div>
-    
           </div>
         </div>
       </div>
-
-   
+   </body>
+</html>
