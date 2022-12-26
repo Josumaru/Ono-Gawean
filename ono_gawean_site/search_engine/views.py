@@ -29,14 +29,23 @@ def go(request):
         isian = forms(request.POST)
         if isian.is_valid():
             submit = isian.form.cleaned_data["submit"]
+            
             return render(request, "search_engine/index.html")
-        #submit = request.POST["submit"]
-        return render (request, "search_engine/index.html", {"submit" : submit})
+            #submit = request.POST["submit"]
+        requset = urllib.request.Request("https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/")
+        response = urllib.request.urlopen(requset)
+        resData = response.read()
+        parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
+        urlText = parsedhtml.findAll("p")
+        tupleText = str(tuple(urlText))
+        txt = html2text.html2text(tupleText)
+        return render (request, "search_engine/index.html",
+        {"txt" : txt})
+        return render (request, "search_engine/index.html", {"txt" : txt})
     else :
         return render (request, "search_engine/index.html")
-
+    print(go.submit)
 def getSearch(request):
-    webbrowser.open_new_tab("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     requset = urllib.request.Request("https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/")
     response = urllib.request.urlopen(requset)
     resData = response.read()

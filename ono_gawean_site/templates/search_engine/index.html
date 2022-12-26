@@ -43,21 +43,21 @@
             <p>Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
             
             
-            <p id="text-container">{{txt}}</p>
+            <p id="text-container">{{p}}</p>
 
             <div class="topnav">
               <form method="post" action="{% url 'go' %}">
                 {% csrf_token %}
                 <label for="submit">Masukan kata kata</label>
                 <br>
-                <input type="text" id="submit" name="user_input">
+                <!-- <input type="submit2" id="submit2" name="user_input"> -->
                 <br>
                 <input type="submit2"
-                value="">
+                value="GG">
+                <button id="submit3">Search</button>
               </form>
-              
-              <!-- <input type="text" placeholder="Search.."> -->
-              <button id="submit">search</button>              
+              <p id="text-container">{{txt}}</p>
+              <!-- <input type="text" placeholder="Search.."> -->            
               <script>
                 document.getElementById("submit").addEventListener("click",function()
                 {
