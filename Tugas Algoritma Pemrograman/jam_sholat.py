@@ -7,7 +7,7 @@ from time import strftime
 my_font = ('times', 52, 'bold')  # display size and style
 
 # mengolah data jadwal sholat
-data = pandas.read_csv(r'C:\Users\ACER\Documents\GitHub\Ono-Gawean\Tugas Algoritma Pemrograman\Jadwal Sholat Yogyakarta, Daerah Istimewa Yogyakarta, Indonesia - Tahun 2021 M.csv').to_dict()
+data = pandas.read_csv(r'\home\Desktop\Ono-Gawean\Tugas Algoritma Pemrograman\Jadwal Sholat Yogyakarta, Daerah Istimewa Yogyakarta, Indonesia - Tahun 2021 M.csv').to_dict()
 df = pandas.DataFrame(data)
 
 
