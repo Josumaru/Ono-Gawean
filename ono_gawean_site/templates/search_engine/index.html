@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+
     <meta charset="utf-8">
     <title>Muhammadiyah</title>
     <link rel="stylesheet" href="{% static 'css/sylesheet.css' %}">
@@ -12,7 +14,8 @@
   </head>
   <style>
     body{
-      background-image: url("{% static 'img/Edutorium-UMS-1124_waifu2x_art_noise1_scale.png' %}");
+      /* background-image: url("{% static 'img/Edutorium-UMS-1124_waifu2x_art_noise1_scale.png' %}"); */
+      background-color: black;
     }
   </style>
   <body>
@@ -38,10 +41,33 @@
             <h1>Muhammadiyah</h1>
             <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
             <p>Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
-    
+            
+            
+            <p id="text-container">{{txt}}</p>
+
             <div class="topnav">
-              <input type="text" placeholder="Search..">
-              <button type="submit">search</button>
+              <form method="post" action="{% url 'go' %}">
+                {% csrf_token %}
+                <label for="submit">Masukan kata kata</label>
+                <br>
+                <input type="text" id="submit" name="user_input">
+                <br>
+                <input type="submit2"
+                value="">
+              </form>
+              
+              <!-- <input type="text" placeholder="Search.."> -->
+              <button id="submit">search</button>              
+              <script>
+                document.getElementById("submit").addEventListener("click",function()
+                {
+                  fetch("/get_search")
+                    .then(response => response.text())
+                    .then(txt =>{
+                      document.getElementById("text-container").innerHTML = txt;
+                    });
+                });
+              </script>
             </div>
           </div>
         </div>
