@@ -1,3 +1,4 @@
+{% load static %}
 html, body,
 ul, ol, li,
 h1, h2, h3, h4, h5, h6, p, div {
@@ -25,7 +26,7 @@ header {
   background-color: rgba(50, 205, 50, 0.5);
   position: fixed;
   top: 0;
- z-index:10;
+  z-index:10;
 }
 
 .logo {
@@ -52,11 +53,11 @@ header {
 }
 
 .hcl li a{
-line-height: 65px;
-padding-left: 25px;
-padding-right: 25px;
-color: white;
-display: block;
+  line-height: 65px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  display: block;
 }
 
 .container {
@@ -66,7 +67,7 @@ display: block;
 }
 .top-wrapper {
     padding: 500px 0 75px 0;
-    background-image: url('/home/rattan/Desktop/Ono-Gawean/Tugas Algoritma Pemrograman/Django/Edutorium-UMS-1124_waifu2x_art_noise1_scale.png');
+    background-image: url("{% static 'css/sylesheet.css' %}">');
     color: white;
     background-size: cover;
     text-align: center;

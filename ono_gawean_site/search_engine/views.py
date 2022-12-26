@@ -20,31 +20,32 @@ api = {
 
 }
 #get = input("Y :")
-
 class forms(forms.Form):
     submit = forms.CharField(max_length=20)
     
-def go(request):
+def userInput(request):
     if request.method == "POST":
-        isian = forms(request.POST)
-        if isian.is_valid():
-            submit = isian.form.cleaned_data["submit"]
-            
-            return render(request, "search_engine/index.html")
-            #submit = request.POST["submit"]
-        requset = urllib.request.Request("https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/")
-        response = urllib.request.urlopen(requset)
-        resData = response.read()
-        parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
-        urlText = parsedhtml.findAll("p")
-        tupleText = str(tuple(urlText))
-        txt = html2text.html2text(tupleText)
-        return render (request, "search_engine/index.html",
-        {"txt" : txt})
-        return render (request, "search_engine/index.html", {"txt" : txt})
-    else :
-        return render (request, "search_engine/index.html")
-    print(go.submit)
+        search = request.POST["search"]
+        if search in api:
+            requset = urllib.request.Request(api[search])
+            response = urllib.request.urlopen(requset)
+            resData = response.read()
+            parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
+            urlText = parsedhtml.findAll("p")
+            tupleText = str(tuple(urlText))
+            txt = html2text.html2text(tupleText)
+            return render (request, "search_engine/index.html",
+            {"txt" : txt})
+        else:
+            txt = "Pencarian tidak ditemukan"
+            return render (request, "search_engine/index.html", {"txt":txt})
+        #return render(request, "search_engine/index.html", {"search" : search})
+    
+        #render (request, "search_engine/index.html", {"search_enhance" : search_enhance})
+    else:
+        x = "Pencarian tidak ditemukan"
+        #return render(request, "search_engine/index.html",{"x" : x})
+    
 def getSearch(request):
     requset = urllib.request.Request("https://muhammadiyah.or.id/dakwah-mesti-disampaikan-dengan-lemah-lembut-dan-teladan-yang-baik/")
     response = urllib.request.urlopen(requset)

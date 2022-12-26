@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index, name="index"),
     path("get_search/",getSearch, name="getSearch"),
-    path("p",go, name="go"),
+    path("result",userInput, name="userInput"),
 ]
