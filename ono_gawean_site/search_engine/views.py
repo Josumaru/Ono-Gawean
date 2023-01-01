@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django import forms
 import urllib,html2text,bs4,random
 # Create your views here.
 def index(request):
@@ -32,7 +31,9 @@ class url_usage():
 
 def userInput(request):
     if request.method == "POST":
-        search = request.POST["search"]
+        userIn = request.POST["search"]
+        search = userIn.replace(" ","+")
+
 
         baseUrl =url_usage(f"https://muhammadiyah.or.id/?s={search}")
         url = baseUrl.url_choose()
