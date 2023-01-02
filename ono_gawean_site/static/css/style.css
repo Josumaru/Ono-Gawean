@@ -25,7 +25,7 @@ a {
 header {
   height: 65px;
   width: 100%;
-  background-color: rgba(33, 220, 33, 0.5);
+  background-color: rgba(32, 136, 32, 0.696);
   position: fixed;
   top: 0;
   z-index:10;
@@ -109,7 +109,6 @@ display: block;
 
 }
 
-
 .topnav a {
   float: left;
   display: block;
@@ -133,7 +132,6 @@ display: block;
   background: transparent;
   outline:0;
   outline: none;
-  display: fl;
   padding: 24px 20px;
   font-size: 20px;
   color: white;
@@ -165,7 +163,16 @@ display: block;
   color: white;
 }
 
+.top-bar{
+  padding: auto;
+  height: 65px;
+  border-radius: 50px;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  border: 0;
 
+}
 .topnav input[type=text] {
   text-align: center;
   padding: 6px;
@@ -174,5 +181,30 @@ display: block;
   margin-right: 16px;
   font-size: 17px;
 }
-
-
+.overlay{
+  top: 20%;
+  color: black;
+  display: none;
+  border-radius: 50px;
+  width: 50%;
+  height: 25%;
+  background-color: blue;
+}
+/* .x{
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 10px;
+  height: 50px;
+  width: 50px;
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+} */
+.jam{
+  padding: 3%;
+  color: white;
+  background-color: green;
+  border: none;
+  border-radius: 50px;
+}

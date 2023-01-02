@@ -7,29 +7,35 @@
     <link rel="shortcut icon" href="{% static 'img/imageedit_2_6229287158.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="{% static 'js/myscript.js' %}"></script>/
+  </head>
   </head>
   <body>
     <header>
-        <div class="container">
-         <div class="header-left">
-           <img class="logo" src="{% static 'img/imageedit_2_6229287158.png' %}">
-         </div>
-         <div class="hcl">
-         <ul>
-           <li> <a href="#" class="login">Jadwal Sholat</a></li>
-           <li><a href="#" class="login">About</a></li>
-          </ul>  
-         </div>
-       </div>
-     </header>
-     <div class="popup" id="popup">
+      <div class="container">
+          <div class="header-left">
+            <img class="logo" src="{% static 'img/imageedit_2_6229287158.png' %}">
+          </div>
+          <div class="hcl">
+            <ul method="post" action="url" class="pp">
+              <li><button onclick="show()"class="top-bar">Jadwal Sholat</button></li>
+              <li><button onclick="show()"class="top-bar">About</button></li>
+
+            </ul>  
+          </div>
+      </div>
+    </header>
+    <div class="popup" id="popup">
 
      </div>
+     
      <div class="top-wrapper">
         <div class="container">
           <div class="content">
+
             <h1>Muhammadiyah</h1>
             <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
+            
             <p>{{search}}</p>
             <div>
               <p for="search">Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
@@ -42,18 +48,26 @@
                   <button type="submit"><img src="{% static 'img/search.png' %}"></button>
                 </div>
               </form>
-                
-              <script>
-                document.getElementById("submit").addEventListener("click",function()
-                {
-                  fetch("/get_search")
-                    .then(response => response.text())
-                    .then(txt =>{
-                      document.getElementById("text-container").innerHTML = txt;
-                    });
-                });
               </script>
+              <style>
+                .overlay{
+                  display: none;
+                  background-color: aliceblue;
+                  padding: 10%;
+                  position: fixed;
+                }
+              </style>
             </div>
+            <form method="post" action="{% url 'jamSholat' %}" id="overlay" class="overlay">
+              {% csrf_token %}
+              <button onclick="hide()" class="jam">×</button>
+              <button type="submit" id="subuh"name="subuh"class="jam">Subuh</button>
+              <button type="dhuhur" class="jam">Dhuhur</button>
+              <button type="ashar" class="jam">Ashar</button>
+              <button type="magrib" class="jam">Magrib</button>
+              <button type="isya" class="jam">Isya</button>
+              <p class="jam">{{p}}</p>
+            </form>
             <p id="text-container">{{txt}}</p>      
           </div>
         </div>
