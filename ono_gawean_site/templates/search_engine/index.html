@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Muhammadiyah</title>
+    <link rel="shortcut icon" href="{% static 'img/imageedit_2_6229287158.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
@@ -21,26 +22,27 @@
          </div>
        </div>
      </header>
+     <div class="popup" id="popup">
+
+     </div>
      <div class="top-wrapper">
         <div class="container">
           <div class="content">
             <h1>Muhammadiyah</h1>
             <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
             <p>{{search}}</p>
+            <div>
+              <p for="search">Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
+            </div>
             <div class="topnav">
-              <form method="post" action="{% url 'userInput' %}">
+              <form method="post" action="{% url 'userInput' %}" class="search-bar">
                 {% csrf_token %}
                 <div>
-                  <p for="search">Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
-                </div>
-                <div>
-                  <input type="text" id="search" name="search">
-                </div>
-                <div>
-                  <input type="submit" value="Search">
+                  <input type="text" placeholder="Search.." id="search" name="search">
+                  <button type="submit"><img src="{% static 'img/search.png' %}"></button>
                 </div>
               </form>
-              <p id="text-container">{{txt}}</p>        
+                
               <script>
                 document.getElementById("submit").addEventListener("click",function()
                 {
@@ -52,6 +54,7 @@
                 });
               </script>
             </div>
+            <p id="text-container">{{txt}}</p>      
           </div>
         </div>
       </div>
