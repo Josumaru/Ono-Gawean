@@ -9,8 +9,8 @@ class url_usage():
     def __init__(self, url):
         self.url = url
     def url_choose(self):
-        requset = urllib.request.Request(self.url)
-        response = urllib.request.urlopen(requset)
+        request = urllib.request.Request(self.url)
+        response = urllib.request.urlopen(request)
         resData = response.read()
         parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
         urlText = parsedhtml.findAll("a",href=True)
@@ -20,8 +20,8 @@ class url_usage():
         return url
 
     def url_parse(self):
-        requset = urllib.request.Request(self.url)
-        response = urllib.request.urlopen(requset)
+        request = urllib.request.Request(self.url)
+        response = urllib.request.urlopen(request)
         resData = response.read()
         parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
         urlText = parsedhtml.findAll("p")
@@ -30,8 +30,8 @@ class url_usage():
         return txt
 
     def time_choose(i):
-        requset = urllib.request.Request("https://www.islamicfinder.org/prayer-times/?language=id")
-        response = urllib.request.urlopen(requset)
+        request = urllib.request.Request("https://www.islamicfinder.org/world/indonesia/1642911/jakarta-prayer-times/?language=id")
+        response = urllib.request.urlopen(request)
         resData = response.read()
         parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
         urlText = parsedhtml.findAll("p")
@@ -39,6 +39,37 @@ class url_usage():
         jam = html2text.html2text(tupleText)
         return jam
 
+    def hadist_choose():
+        request = urllib.request.Request("https://www.islamicfinder.org/hadith/bukhari/al-jummah-friday")
+        response = urllib.request.urlopen(request)
+        resData = response.read()
+        parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
+        urlText = parsedhtml.findAll("p")
+        randomNumber = random.randint(210,219)
+        getText = str(urlText[randomNumber])
+        text = html2text.html2text(getText)
+        return text
+
+    def hadistr_choose():
+        request = urllib.request.Request("https://www.islamicfinder.org/hadith/bukhari/al-jummah-friday")
+        response = urllib.request.urlopen(request)
+        resData = response.read()
+        parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
+        urlText = parsedhtml.findAll("p")
+        randomNumber = random.randint(210,219)
+        getText = str(urlText[randomNumber])
+        text = html2text.html2text(getText)
+        return text
+
+    def date_choose():
+        request = urllib.request.Request("https://www.islamicfinder.org/world/indonesia/1642911/jakarta-prayer-times/?language=id")
+        response = urllib.request.urlopen(request)
+        resData = response.read()
+        parsedhtml = bs4.BeautifulSoup(resData, "html.parser")
+        urlText = parsedhtml.findAll("p")
+        getText = str(urlText[4])
+        text = html2text.html2text(getText)
+        return text
 
 def userInput(request):
     if request.method == "POST":
@@ -53,11 +84,22 @@ def userInput(request):
 
         return render (request, "search_engine/index.html",
         {"txt" : txt})
-i = 5
+
 def jamSholat(request):
     if request.method == "POST":
-        if request.POST["subuh"] == "subuh":
-            """none"""
-        jam = url_usage.time_choose(i)
-        return render (request, "search_engine/index.html",{"p" : jam})
-       
+        jam = request.POST["jam"]
+        getTime = url_usage.time_choose(int(jam))
+        getDate = url_usage.date_choose()
+        jamsholat = getTime+", Date : "+getDate
+        return render (request, "search_engine/index.html",{"p" : jamsholat})
+def getHadist(request):
+    if request.method == "POST":
+        request.POST["getHadist"]
+        hadistGet = url_usage.hadist_choose()
+        return render (request, "search_engine/index.html",{"h":hadistGet})
+def getNews(request):
+    if request.method == "POST":
+        request.POST["getHadist"]
+        newsGet = url_usage.hadist_choose()
+        return render (request, "search_engine/index.html",{"h": newsGet})
+

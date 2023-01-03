@@ -20,6 +20,7 @@ from search_engine.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index, name="index"),
-    path("result?",userInput, name="userInput"),
-    path("jam_sholat/",jamSholat,name="jamSholat")
+    path("result/",userInput, name="userInput"),
+    path("jam_sholat/",jamSholat,name="jamSholat"),
+    path("hadist/",getHadist, name="getHadist"),
 ]

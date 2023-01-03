@@ -23,7 +23,7 @@ a {
 
 
 header {
-  height: 65px;
+  height: 67px;
   width: 100%;
   background-color: rgba(32, 136, 32, 0.696);
   position: fixed;
@@ -43,23 +43,36 @@ header {
   bottom: 67px;
   background-color: rgba(255, 255, 255, 0.3);
   transition:all 0.5s;
-  margin:0 10px;
-}
-.hcl li {
   float: left;
+  width: 15%;
+  margin: 0 20px;
+  padding: 0px 20px;
+}
+.hcl-left li{
+  float: left;
+  left: 150px;
+  position: relative;
+  bottom: 67px;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition:all 0.5s;
+  float: left;
+  width: 15%;
+  margin: 0 20px;
   padding: 0px 20px;
 }
 
 .hcl li:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(97, 249, 9, 0.64);
 }
-
+.hcl-left li:hover {
+  background-color: rgba(97, 249, 9, 0.64);
+}
 .hcl li a{
-line-height: 65px;
-padding-left: 25px;
-padding-right: 25px;
-color: white;
-display: block;
+  line-height: 65px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  display: block;
 }
 
 .container {
@@ -138,12 +151,16 @@ display: block;
 }
 ::placeholder{
   color: green;
+  top: 0;
 }
 .search-bar button img{
   width: 25px;
+  
 }
 .search-bar button{
-  margin-bottom: 1%;
+  margin-left: 14px;
+  margin-top: 2%;
+  margin-bottom: 2%;
   border: 0;
   border-radius: 50%;
   width: 60px;
@@ -166,12 +183,17 @@ display: block;
 .top-bar{
   padding: auto;
   height: 65px;
-  border-radius: 50px;
   background-color: transparent;
-  outline: none;
   color: white;
   border: 0;
-
+}
+.top-bar-left{
+  padding: auto;
+  left: 20%;
+  height: 65px;
+  background-color: transparent;
+  color: white;
+  border: 0;
 }
 .topnav input[type=text] {
   text-align: center;
@@ -182,29 +204,140 @@ display: block;
   font-size: 17px;
 }
 .overlay{
+  margin: auto;
   top: 20%;
   color: black;
   display: none;
   border-radius: 50px;
   width: 50%;
   height: 25%;
-  background-color: blue;
-}
-/* .x{
-  border: none;
-  background-color: transparent;
+  display: none;
+  background-color: rgb(255, 255, 255);
+  padding: 10%;
   position: absolute;
-  top: 10px;
-  height: 50px;
-  width: 50px;
-  color: white;
-  background-color: black;
-  border-radius: 50%;
-} */
+}
 .jam{
   padding: 3%;
+  margin: 10;
   color: white;
+  height: fit-content;
   background-color: green;
   border: none;
   border-radius: 50px;
+  width: 14%;
+}
+.overlay2{
+  margin: auto;
+  top: 20%;
+  color: black;
+  display: none;
+  border-radius: 50px;
+  width: 50%;
+  height: 25%;
+  display: none;
+  background-color: rgb(255, 255, 255);
+  padding: 10%;
+  position: absolute;
+}
+.overlay3{
+  margin: auto;
+  top: 20%;
+  color: black;
+  display: none;
+  padding: 10%;
+  border-radius: 50px;
+  width: 50%;
+  height: 30%;
+  display: none;
+  background-color: rgb(255, 255, 255);
+  padding: 10%;
+  position:fixed;
+}
+.top{
+  margin: auto;
+  top: 20%;
+  color: black;
+  display: none;
+  padding: 10%;
+  border-radius: 50px;
+  width: 50%;
+  height: 30%;
+  display: none;
+  background-color: rgb(255, 255, 255);
+  padding: 10%;
+  position:fixed;
+}
+.overlay4{
+  display: none;
+}
+.hadist{
+  padding: 3%;
+  margin: 10;
+  color: white;
+  height: fit-content;
+  background-color: green;
+  width: 20%;
+  border: none;
+  border-radius: 50px;
+  width: 20%;
+}
+
+.jam-waktu{
+  padding: 20px;
+  color: white;
+  margin: 20px;
+  border-radius: 50px;
+  background-color: green;
+}
+
+
+.contain {
+  top: 0;
+}
+
+.creator1 li{
+  float:left;
+  padding: 5px, 10px;
+  margin: 20px;
+}
+.creator1{
+  padding: 10px, 0px;
+}
+.creator2 {
+padding: 50px;
+}
+.creator2 li{
+  padding: 5px, 10px;
+  margin: 20px;
+}
+
+.btn {
+  padding: 12px 24px;
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.signup {
+  background-color: #239b76;
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.twitter {
+  background-color: #55acee;
+}
+.link {
+  margin: 20px 0;
+}
+
+.link p {
+  margin: 10px 0;
 }

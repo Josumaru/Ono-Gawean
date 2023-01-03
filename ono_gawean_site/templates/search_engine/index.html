@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Muhammadiyah</title>
-    <link rel="shortcut icon" href="{% static 'img/imageedit_2_6229287158.png' %}">
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="{% static 'js/myscript.js' %}"></script>/
@@ -14,14 +14,19 @@
     <header>
       <div class="container">
           <div class="header-left">
-            <img class="logo" src="{% static 'img/imageedit_2_6229287158.png' %}">
+            <img class="logo" src="{% static 'img/logo.png' %}">
           </div>
           <div class="hcl">
-            <ul method="post" action="url" class="pp">
+            <ul method="post" action="url" class="header-container">
               <li><button onclick="show()"class="top-bar">Jadwal Sholat</button></li>
-              <li><button onclick="show()"class="top-bar">About</button></li>
-
-            </ul>  
+              <li><button onclick="show_about()"class="top-bar">About</button></li>
+            </ul>
+          </div>
+          <div class="hcl-left">
+            <ul method="post" action="url" class="header-container">
+              <li><button onclick="show_news()"class="top-bar">News</button></li>
+              <li><button onclick="show_hadist()"class="top-bar">Hadist</button></li>
+            </ul>   
           </div>
       </div>
     </header>
@@ -49,25 +54,62 @@
                 </div>
               </form>
               </script>
-              <style>
-                .overlay{
-                  display: none;
-                  background-color: aliceblue;
-                  padding: 10%;
-                  position: fixed;
-                }
-              </style>
-            </div>
+            </div>  
+          </div>
+            
             <form method="post" action="{% url 'jamSholat' %}" id="overlay" class="overlay">
               {% csrf_token %}
-              <button onclick="hide()" class="jam">×</button>
-              <button type="submit" id="subuh"name="subuh"class="jam">Subuh</button>
-              <button type="dhuhur" class="jam">Dhuhur</button>
-              <button type="ashar" class="jam">Ashar</button>
-              <button type="magrib" class="jam">Magrib</button>
-              <button type="isya" class="jam">Isya</button>
-              <p class="jam">{{p}}</p>
+              <button onclick="hide()" type="button"class="jam">Close</button>
+              <button id ="overlay" type="submit" name="jam" value="5" class="jam">Subuh</button>
+              <button id ="overlay" type="submit" name="jam" value="7" class="jam">Dzuhur</button>
+              <button id ="overlay" type="sumbit" name="jam" value="8" class="jam">Ashar</button>
+              <button id ="overlay" type="submit" name="jam" value="9" class="jam">Magrib</button>
+              <button id ="overlay" type="submit" name="jam" value="10" class="jam">Isya</button>
+              <p class="jam-waktu">{{p}}</p>
             </form>
+            <form method="post" action="{% url 'getHadist' %}" id="overlay2" class="overlay2">
+              {% csrf_token %}
+              <button onclick="hide_hadist()" type="button"class="hadist">Close</button>
+              <button id ="overlay2" type="submit" name="getHadist" class="hadist">Al Bukhari</button>
+              <p class="hadist-output">{{h}}</p>
+            </form>
+            <form onclick="hide_about()"method="post" action="{% url 'getHadist' %}" id="overlay3" class="overlay3">
+              {% csrf_token %}
+                  <div class="creator">
+                    <h1>Tentang Kami</h1>
+                    <ul class="creator1"><br>
+                      <P>Fadhil Erdya Qashmal</p>
+                      <p>Joko Supriyanto</p>
+                      <p>Pandu Adi Wijaya Kusuma Wardana</p>
+                      <p>Aditiya Ari Wicaksono</p>
+                      <p>Gilang Sri Nayaka</p>
+                      <p>Afrizal Putra Pratama</p>
+                      <p>Garin Legantoro Adi</p><br>
+                    </ul>
+                  </div class="pp">
+                  <div class="link">
+                    <a href="https://www.instagram.com/lensamu/?hl=en" class="btn signup">
+                      <span class='fa fa-instagram'></span>
+                      Instagram
+                    </a>
+                    <a href="https://www.facebook.com/PersyarikatanMuhammadiyah/" class="btn facebook">
+                      <span class="fa fa-facebook"></span>
+                    Facebook
+                    </a>
+                    <a href="https://twitter.com/muhammadiyah" class="btn twitter">
+                    <span  class="fa fa-twitter"></span>
+                    Twitter
+                  </a>
+                  </div>
+            </body>
+            </form>
+            <form method="post" action="{% url 'getHadist' %}" id="overlay4" class="overlay2">
+              {% csrf_token %}
+              <button onclick="hide_news()" type="button"class="hadist">Close</button>
+              <button id ="overlay4" type="submit" name="getHadist" class="hadist">Al Bukhari</button>
+              <p class="hadist-output">{{h}}</p>
+            </form>
+
             <p id="text-container">{{txt}}</p>      
           </div>
         </div>
