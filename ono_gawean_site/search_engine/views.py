@@ -5,7 +5,10 @@ import urllib,html2text,bs4,random
 def index(request):
     return render(request, "search_engine/index.html")
 
-class url_usage():
+class ortom():
+    tahunBerdiri = 
+
+
     def __init__(self, url):
         self.url = url
     def url_choose(self):
@@ -76,10 +79,10 @@ def userInput(request):
         userIn = request.POST["search"]
         search = userIn.replace(" ","+")
 
-        baseUrl = url_usage(f"https://muhammadiyah.or.id/?s={search}")
+        baseUrl = ortom(f"https://muhammadiyah.or.id/?s={search}")
         url = baseUrl.url_choose()
 
-        chosen_url = url_usage(url)
+        chosen_url = ortom(url)
         txt = chosen_url.url_parse()
 
         return render (request, "search_engine/index.html",
@@ -95,11 +98,11 @@ def jamSholat(request):
 def getHadist(request):
     if request.method == "POST":
         request.POST["getHadist"]
-        hadistGet = url_usage.hadist_choose()
+        hadistGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h":hadistGet})
 def getNews(request):
     if request.method == "POST":
         request.POST["getHadist"]
-        newsGet = url_usage.hadist_choose()
+        newsGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h": newsGet})
 
