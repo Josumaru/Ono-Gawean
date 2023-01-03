@@ -345,14 +345,14 @@ padding: 50px;
 .lesson-wrapper {
   height: 500px;
   padding-bottom: 80px;
-  background-color: #f7f7f7;
   text-align:center;
+  color: white;
 }
 
 .heading {
   padding-top: 60px;
   padding-bottom: 30px;
-  color: #5f5d60;
+  color:black;
 }
 
 .heading h2 {
@@ -378,9 +378,9 @@ padding: 50px;
 
 
 .txt-contents {
+  color:white;
   width: 80%;
   display: inline-block;
   margin-top: 20px;
   font-size: 15px;
-  color:#b3aeb5;
 }
