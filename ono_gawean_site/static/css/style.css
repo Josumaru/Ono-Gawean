@@ -1,4 +1,5 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+impor
 html, body,
 ul, ol, li,
 h1, h2, h3, h4, h5, h6, p, div {
@@ -7,10 +8,291 @@ h1, h2, h3, h4, h5, h6, p, div {
 
 }
 
-body {
-  font-family: "Lucida Grande";
-  background-color: black;
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+:root{
+    --main-color: green;
+    --image-color:green ;
+    --background-color: #E8E4E4;
+    --text-color : #3E3E3E;
+    --light-mode : #FFFFFF;
+    --light-color : #D8FFdF;
+    --overlay-color:#2f2e2e;
+    --transition-02: all 0.2s ease;
+    --transition-03: all 0.3s ease;
+    --transition-04: all 0.4s ease;
+    --transition-05: all 0.5s ease;
+  }
+  
+  body{
+    height: 100vh;
+    background: var(--background-color);
+}
+
+
+body.dark{
+    transition:all 1s ease;
+    --main-color: #FFFFFF;
+    --image-color:transparent ;
+    --background-color: #353535;
+    --text-color : #ffffff;
+    --light-mode : #3a3a3a;
+    --light-color : #1d1d1d;
+    --overlay-color:#FFFFFF;
+    --transition-02: all 0.2s ease;
+    --transition-03: all 0.3s ease;
+    --transition-04: all 0.4s ease;
+    --transition-05: all 0.5s ease;
+}
+/*=======  =========*/
+.sidebar .text{
+    font-size:16px;
+    font-weight: 500;
+    padding: 5px;
+    color: var(--main-color);
+}
+
+.sidebar .image{
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+/* ======  ======== */
+.search-button{
+    border: none;
+    background: transparent;
+    
+}
+.sidebar{
+    transition: var(--transition-05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 290px;
+    background: var(--light-mode);
+    padding: 10px 14px;
+    white-space: nowrap;
+    z-index: 100;
+}
+ 
+.sidebar.close{
+    width: 88px;
+}
+
+
+.sidebar.close .text{
+    opacity: 0;
+}
+
+.sidebar.close .toggle{
+    opacity: 1;
+}
+
+
+.sidebar li{
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    
+}
+
+.sidebar li .icon{
+    min-width: 60px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar li .icon,
+.sidebar li .text{
+    color: var(--main-color);
+    transition: var(--transition-02);
+}
+
+.sidebar li .text{
+    font-size: 17px;
+}
+.sidebar header{
+    position: relative;
+
+}
+.sidebar .image-text img{
+    width: 59px;
+    border-radius: 6px;
+    background-color: var(--image-color);
+}
+
+.sidebar header .image-text{
+    display: flex;
+    align-items: center;
+    opacity: 1;
+
+}
+.sidebar.close header .image-text{
+    opacity: 1;
+
+}
+
+header .image-text .header-text{
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-05);
+}
+
+.header-text .topic{
+    font-weight: 600;
+}
+
+.header-text .teams{
+    margin-top: -2px;
+}
+
+.sidebar header .toggle{
+    position: absolute;
+    top: 50%;
+    right: 1px;
+    transform: translateY(-50%);
+    height: 58px;
+    width: 59px;
+    background: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--light-mode);
+    font-size: 20px;
+}
+
+.sidebar .search-box{
+    background: var(--light-color);
+    border-radius: 6px;
+}
+
+.search-box input{
+    height: 100%;
+    width: 100%;
+    background: var(--light-color);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+}
+
+.sidebar li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--transition-04);
+ 
+}
+
+.sidebar li a:hover{
+    background: var(--main-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--background-color);
+}
+
+.sidebar .menu-bar{
+    height: calc(100% - 70px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-bar .mode{
+    position: relative;
+    background: var(--light-color);
+    border-radius: 5px;
+}
+
+.menu-bar .mode .moon-sun{
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar .mode i{
+    position: absolute;
+    transition: var(--transition-05);
+}
+
+
+.menu-bar .mode i.sun{
+    opacity: 0;
+}
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+
+.menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 60px;
+    cursor: pointer;
+}
+
+
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: rgb(234, 233, 233);
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--light-mode);
+    transition: var(--transition-03);
+}
+
+body.dark .switch::before{
+    left: 25px;
+}
+
+.home{
+    position: relative;
+    height: 100vh;
+    left: 300px;
+    width: calc(100% - 300px);
+    transition: var(--transition-05);
+}
+
+.sidebar.close ~ .home{
+    left: 98px;
+    width: calc(100% - 98px);
+}
+/*==================*/
 
 li {
   list-style: none;
@@ -25,10 +307,10 @@ a {
 header {
   height: 67px;
   width: 100%;
-  background-color: rgba(32, 136, 32, 0.696);
+  background-color: var(--main-color);
   position: fixed;
-  top: 0;
   z-index:10;
+  
 }
 
 .logo {
@@ -37,8 +319,8 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
+
 .hcl li{
-  float: left;
   position: relative;
   bottom: 67px;
   background-color: rgba(255, 255, 255, 0.3);
@@ -48,9 +330,9 @@ header {
   margin: 0 20px;
   padding: 0px 20px;
 }
-.hcl-left li{
+/* .hcl-left li{
   float: left;
-  left: 150px;
+  left: 200px;
   position: relative;
   bottom: 67px;
   background-color: rgba(255, 255, 255, 0.3);
@@ -59,14 +341,14 @@ header {
   width: 15%;
   margin: 0 20px;
   padding: 0px 20px;
-}
+} */
 
 .hcl li:hover {
   background-color: rgba(97, 249, 9, 0.64);
 }
-.hcl-left li:hover {
+/* .hcl-left li:hover {
   background-color: rgba(97, 249, 9, 0.64);
-}
+} */
 .hcl li a{
   line-height: 65px;
   padding-left: 25px;
@@ -76,7 +358,7 @@ header {
 }
 
 .container {
-  width: 1170px;
+  width: 100%;
   padding: 0 15px;
   margin: 0 auto;
 }
@@ -91,7 +373,7 @@ header {
   position: relative;
   bottom:250px;
   opacity:1.0;
-  
+  color: var(--text-color);
 }
 .content h1{
   display: block;
@@ -125,13 +407,13 @@ header {
 .topnav a {
   float: left;
   display: block;
-  color: black;
+  color: var(--main-color);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
-.search-bar{
+/* .search-bar{
   border-radius: 60px;
   background: rgba(255, 255, 255, 0.3);
   width: 100%;
@@ -167,7 +449,7 @@ header {
   height: 60px;
   background-color: green;
   cursor: pointer;
-}
+} */
 
 .topnav a:hover {
   background-color: #ddd;
@@ -184,18 +466,19 @@ header {
   padding: auto;
   height: 65px;
   background-color: transparent;
-  color: white;
+  color: var(--background-color);
   border: 0;
 }
-.top-bar-left{
+/* .top-bar-left{
   padding: auto;
   left: 20%;
   height: 65px;
   background-color: transparent;
   color: white;
   border: 0;
-}
-.topnav input[type=text] {
+
+} */
+.topnav input{
   text-align: center;
   padding: 6px;
   border: none;
@@ -204,15 +487,14 @@ header {
   font-size: 17px;
 }
 .overlay{
-  margin: auto;
+  
   top: 20%;
-  color: black;
   display: none;
   border-radius: 50px;
   width: 50%;
   height: 25%;
   display: none;
-  background-color: rgb(255, 255, 255);
+  background: var(--overlay-color);
   padding: 10%;
   position: absolute;
 }
