@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import urllib,html2text,bs4,random
 # Create your views here.
 def index(request):
