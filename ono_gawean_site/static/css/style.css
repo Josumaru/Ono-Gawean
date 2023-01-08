@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-impor
+
 html, body,
 ul, ol, li,
 h1, h2, h3, h4, h5, h6, p, div {
@@ -8,12 +8,17 @@ h1, h2, h3, h4, h5, h6, p, div {
 
 }
 
+body{
+  margin-top: 10px;
+}
+
 *{
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 
 :root{
     --main-color: green;
@@ -27,27 +32,44 @@ h1, h2, h3, h4, h5, h6, p, div {
     --transition-03: all 0.3s ease;
     --transition-04: all 0.4s ease;
     --transition-05: all 0.5s ease;
-  }
-  
-  body{
-    height: 100vh;
-    background: var(--background-color);
+}
+
+::-webkit-scrollbar{
+  width: 14px;
+}
+
+::-webkit-scrollbar-track{
+  background-color: var(--background-color);
+}
+::-webkit-scrollbar-corner{
+  background-color: var(--light-color);
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--main-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: var(--light-color);
+
+}
+body{
+  height: 100vh;
+  background: var(--background-color);
 }
 
 
 body.dark{
-    transition:all 1s ease;
-    --main-color: #FFFFFF;
-    --image-color:transparent ;
-    --background-color: #353535;
-    --text-color : #ffffff;
-    --light-mode : #3a3a3a;
-    --light-color : #1d1d1d;
-    --overlay-color:#FFFFFF;
-    --transition-02: all 0.2s ease;
-    --transition-03: all 0.3s ease;
-    --transition-04: all 0.4s ease;
-    --transition-05: all 0.5s ease;
+  transition:all 1s ease;
+  --main-color: #FFFFFF;
+  --image-color:transparent ;
+  --background-color: #353535;
+  --text-color : #ffffff;
+  --light-mode : #3a3a3a;
+  --light-color : #1d1d1d;
+  --overlay-color:#FFFFFF;
+  --transition-02: all 0.2s ease;
+  --transition-03: all 0.3s ease;
+  --transition-04: all 0.4s ease;
+  --transition-05: all 0.5s ease;
 }
 /*=======  =========*/
 .sidebar .text{
@@ -55,9 +77,9 @@ body.dark{
     font-weight: 500;
     padding: 5px;
     color: var(--main-color);
-}
-
-.sidebar .image{
+  }
+  
+  .sidebar .image{
     min-width: 60px;
     display: flex;
     align-items: center;
@@ -68,8 +90,8 @@ body.dark{
     border: none;
     background: transparent;
     
-}
-.sidebar{
+  }
+  .sidebar{
     transition: var(--transition-05);
     position: fixed;
     top: 0;
@@ -93,10 +115,10 @@ body.dark{
 
 .sidebar.close .toggle{
     opacity: 1;
-}
+  }
+  
 
-
-.sidebar li{
+  .sidebar li{
     height: 50px;
     margin-top: 10px;
     list-style: none;
@@ -111,7 +133,7 @@ body.dark{
     display: flex;
     align-items: center;
     justify-content: center;
-}
+  }
 .sidebar li .icon,
 .sidebar li .text{
     color: var(--main-color);
@@ -123,7 +145,6 @@ body.dark{
 }
 .sidebar header{
     position: relative;
-
 }
 .sidebar .image-text img{
     width: 59px;
@@ -138,15 +159,15 @@ body.dark{
 
 }
 .sidebar.close header .image-text{
-    opacity: 1;
-
+  opacity: 1;
+  
 }
 
 header .image-text .header-text{
-    display: flex;
+  display: flex;
     flex-direction: column;
     transition: var(--transition-05);
-}
+  }
 
 .header-text .topic{
     font-weight: 600;
@@ -159,6 +180,7 @@ header .image-text .header-text{
 .sidebar header .toggle{
     position: absolute;
     top: 50%;
+    border-radius: 6px;
     right: 1px;
     transform: translateY(-50%);
     height: 58px;
@@ -304,12 +326,12 @@ a {
 
 
 
-header {
+/* header {
   height: 67px;
   width: 100%;
   background-color: var(--main-color);
   position: fixed;
-  z-index:10;
+  z-index:10; */
   
 }
 
@@ -489,14 +511,15 @@ header {
 .overlay{
   
   top: 20%;
+  position: fixed;
   display: none;
-  border-radius: 50px;
+  border-radius: 20px;
   width: 50%;
   height: 25%;
-  display: none;
   background: var(--overlay-color);
-  padding: 10%;
-  position: absolute;
+  padding-top: 1%;
+  margin-right: auto;
+  margin-left: auto ;
 }
 .jam{
   padding: 3%;
@@ -505,7 +528,7 @@ header {
   height: fit-content;
   background-color: green;
   border: none;
-  border-radius: 50px;
+  border-radius: 20px;
   width: 14%;
 }
 .overlay2{

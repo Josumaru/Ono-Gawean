@@ -1,5 +1,3 @@
-
-
 function show(){
     document.getElementById("overlay").style.display = "block"
 }
