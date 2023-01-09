@@ -23,4 +23,8 @@ urlpatterns = [
     path("result/",userInput, name="userInput"),
     path("jam_sholat/",jamSholat,name="jamSholat"),
     path("hadist/",getHadist, name="getHadist"),
+    path("hw/", hw, name="hw" ),
+    path("aisyiyah/", Aisyiyah, name="aisyiyah"),
+    path("ipm/", ipm, name="ipm"),
+    path("pm/", pemudaMuhammadiyah, name="pm")
 ]

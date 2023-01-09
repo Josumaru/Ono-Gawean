@@ -14,54 +14,77 @@
 </head>
 <body>
     
-    <div onclick="hide_ortom()" id="ortom-overlay" class="lesson-wrapper">
-        <div class="container">
-          <div class="heading">
-            <h2>Beberapa Organisasi dibawah Muhammadiyah</h2>
+  <div onclick="hide_ortom()" id="ortom-overlay" class="lesson-wrapper">
+    <div class="container">
+      <div class="heading">
+        <h2>Beberapa Organisasi dibawah Muhammadiyah</h2>
+      </div>
+
+      <div class="lessons">
+        <div class="lesson">
+          <div class="lesson-icon">
           </div>
-          <div class="lessons">
-            <div class="lesson">
-              <div class="lesson-icon">
-                <img onclick="show_aisyiyah()" src="{% static 'img/aisyiya-png.png' %}">
-              </div>
-              <p class="txt-contents"> Aisyiyah </p>
-            </div>
-            <div class="lesson">
-              <div class="lesson-icon">
-                <img src="{% static 'img/hw.png' %}">
-              </div>
-              <p class="txt-contents">Hizbul Wathan</p>
-            </div>
-            <div class="lesson">
-              <div class="lesson-icon">
-                <img src="{% static 'img/Logo-Ikatan-Pelajar-Muhammadiyah-Resmi.png' %}">
-              </div>
-              <p class="txt-contents">Ikatan Pelajar Muhammadiyah</p>
-            </div>
-            <div class="lesson">
-              <div class="lesson-icon">
-                <img src="{% static 'img/pm.png' %}">
-              </div>
-              <p class="txt-contents">Pemuda Muhammadiyah</p>
-            </div>
+          <form method="post" action="{% url 'aisyiyah' %}">
+            {% csrf_token %}
+            <input class="image-lesson" type="image" src="{% static 'img/aisyiya-png.png' %}" alt="aisyiyah">
+            <p><button class="button-lesson" type="submit"  name="aisyiyah">Aisyiyah</p>
+          </form>
+        </div>
+        <div class="lesson">
+          <div class="lesson-icon">
+          </div>
+          <form method="post" action="{% url 'hw' %}">
+            {% csrf_token %}
+            <input class = "image-lesson"type="image" src="{% static 'img/hw.png' %}" alt="hw">
+            <p><button class="button-lesson" type="submit"  name="aisyiyah">Hizbul Wathan</p>
+            </form>
+        </div>
+     
+        <div class="lesson">
+          <div class="lesson-icon">
+          </div>
+            <form method="post" action="{% url 'ipm' %}">
+              {% csrf_token %}
+              <input class="image-lesson" type="image" src="{%  static 'img/Logo-Ikatan-Pelajar-Muhammadiyah-Resmi.png'  %}" alt="ipm">
+              <p><button class="button-lesson" type="submit"  name="ipm">Ikatan Pelajar Muhammadiyah</p>
+        
+              </form>
           </div>
         </div>
+        <div class="lesson">
+          <div class="lesson-icon">
+          </div>
+          <form method="post" action="{% url 'ipm' %}">
+            {% csrf_token %}
+            <input class="image-lesson" type="image" src="{% static 'img/pm.png' %}" alt="pm">
+            <p><button class="button-lesson" type="submit"  name="pm">Pemuda Muhammadiyah</p>      
+            </form>
+          
+        </div>
       </div>
-      <div  id="aisyiyah" class="ortom-div">
-        <section class="hidden">
-          <img alt="nyai-ahmad" src="{%  static 'img/nyai-ahmad.jpg'  %}">
-            <h1></h1>
-            <p class="pobox">{{nama_variabel}}</p>
-        </section>
-        <section class="hidden">
-          <img alt="logo" src="{% static 'img/logo.png' %}">
-            <h2>Ini lebih besar</h2>
-            <p>Paragraf</p>
-        </section>
-        <section class="hidden">
-            <h2>Sama Juga</h2>
-        </section>
-      </div>   
+    </div>
+  </div>
+
+  <div  id="home-screen" class="ortom-div">
+  </div>
+
+  <div  id="aisyiyah" class="ortom-div">
+    <section class="hidden">
+        <h1>{{nama}}</h1>
+        <p class="pobox">{{pendiri}}</p>
+      </section>
+      <section class="hidden">
+        <p class="pobox">{{tahun}}</p>
+    </section>
+    <section class="hidden">
+      <p class="pobox">{{ketua}}</p>
+    </section>
+    <section class="hidden">
+        <p>{{rangkuman}}</p>
+    </section>
+  </div>  
+  
+
     <nav class="sidebar close">
         <header>
             
@@ -89,7 +112,7 @@
                 </li>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a onclick="hide(),hide_hadist(),hide_ortom(),hide_aisyiyah(),hide_news(),hide_about()" href="#">
                             <i class='bx bx-home icon'></i>
                             <span class="text nav-text">Home</span>
                         </a>
@@ -97,7 +120,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a onclick="show_ortom()" href="#">
+                        <a onclick="show_ortom(),hide(),hide_hadist(),hide_aisyiyah(),hide_news(),hide_about()" href="#">
                             <i class="fa-sharp fa-solid fa-star-and-crescent icon "></i>
                             <span class="text nav-text">Ortom</span>
                         </a>
@@ -105,7 +128,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a onclick="show_aisyiyah()" href="#">
+                        <a onclick="show_news(),hide_aisyiyah(),hide(),hide_hadist(),hide_ortom(),hide_news(),hide_about()" href="#">
                             <i class='bx bx-news icon'></i>
                             <span class="text nav-text">News</span>
                         </a>
@@ -113,7 +136,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a onclick="show_hadist()"href="#">
+                        <a onclick="show_hadist(),hide(),hide_ortom(),hide_aisyiyah(),hide_news(),hide_about()""href="#">
                             <i class="fa-solid fa-book-quran icon "></i>
                             <span class="text nav-text">Hadist</span>
                         </a>
@@ -121,7 +144,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a onclick="show()"href="#">
+                        <a onclick="show(),hide_hadist(),hide_ortom(),hide_aisyiyah(),hide_news(),hide_about()""href="#">
                             <i class='bx bx-time-five icon'></i>
                             <span class="text nav-text">Jam Sholat</span>
                         </a>
@@ -129,7 +152,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a onclick="show_about()" href="#">
+                        <a onclick="show_about(),hide(),hide_hadist(),hide_ortom(),hide_aisyiyah(),hide_news()" href="#">
                             <i class='bx bx-user-circle icon'></i>
                             <span class="text nav-text">About</span>
                         </a>
@@ -158,8 +181,7 @@
         </div>
     </nav>
     <div class="home">
-        <header>
-        </header>
+        
           <div class="popup" id="popup">
            <div class="top-wrapper">
               <div class="container">

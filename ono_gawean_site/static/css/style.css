@@ -319,6 +319,11 @@ body.dark .switch::before{
     left: 98px;
     width: calc(100% - 98px);
 }
+
+.sidebar.close ~ .lesson-wrapper{
+  left: 98px;
+  width: calc(100% - 98px);
+}
 /*==================*/
 
 li {
@@ -338,7 +343,7 @@ a {
   position: fixed;
   z-index:10; */
   
-}
+
 
 .logo {
   width: 70px;
@@ -653,6 +658,7 @@ padding: 50px;
 }
 
 section{
+  padding-left: 20px;
   color: var(--text-color);
   display: grid;
   place-items: center;
@@ -664,6 +670,7 @@ section{
 .hidden {
   opacity: 0;
   transition: all 5s;
+  white-space: wrap;
 }
 
 .hidden img{
@@ -677,10 +684,13 @@ section{
 
 
 .lesson-wrapper {
+  position: relative;
+  left: 88px;
+  width: calc(100% - 88px);
   transition: var(--transition-05);
   display: none;
   transition: 1s;
-  height: 500px;
+  height: 100vh;
   padding-bottom: 80px;
   background-color: var(--background-color);
   text-align:center;
@@ -714,22 +724,49 @@ section{
 }
 
 
-.txt-contents {
+/* .txt-contents {
+  border: none;
   transition: var(--transition-03);
   width: 80%;
   display: inline-block;
   margin-top: 20px;
   font-size: 15px;
   color: var(--text-color);
+} */
+
+.button-lesson{
+  color: var(--text-color);
+  border: none;
+  background-color: transparent;
+  transition: var(--transition-05);
 }
 
+.button-lesson:hover{
+  padding: 20px;
+  color: var(--main-color);
+}
+
+.image-lesson{
+  background-color: var(--text-color);
+  border-radius: 20px;
+  transition: var(--transition-04);
+  width: 240px;
+  height: 240px;
+}
+
+
+.image-lesson:hover{
+  padding: 20px;
+  background-color: var(--background-color);
+}
 
 .pobox{
   white-space: pre-wrap;
 }
 
 .ortom-div{
-  display: none;
+  position: flex;
+  display: block;
 }
 
 footer{
@@ -795,4 +832,8 @@ footer{
 .footer-col ul li a:hover{
   color: var(--background-color);
   padding-left: 10px;
+}
+
+.nyai-ahmad{
+  display: block;
 }

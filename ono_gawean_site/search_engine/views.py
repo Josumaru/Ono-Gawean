@@ -1,12 +1,18 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 import urllib,html2text,bs4,random
 # Create your views here.
 def index(request):
     return render(request, "search_engine/index.html")
 
-class url_usage():
-    def __init__(self, url):
-        self.url = url
+class ortom():
+    nama =""
+    tahunBerdiri = 0000
+    ketuaUmum = ""
+    url = "url website"
+    Pendiri=""
+
+
     def url_choose(self):
         request = urllib.request.Request(self.url)
         response = urllib.request.urlopen(request)
@@ -15,8 +21,7 @@ class url_usage():
         urlText = parsedhtml.findAll("a",href=True)
         randomNumber = random.randint(170,190)
         getUrl = (urlText[randomNumber])
-        url = getUrl["href"]
-        return url
+        self.url = getUrl["href"]
 
     def url_parse(self):
         request = urllib.request.Request(self.url)
@@ -75,10 +80,12 @@ def userInput(request):
         userIn = request.POST["search"]
         search = userIn.replace(" ","+")
 
-        baseUrl = url_usage(f"https://muhammadiyah.or.id/?s={search}")
+        baseUrl = ortom()
+        baseUrl.url = f"https://muhammadiyah.or.id/?s={search}"
         url = baseUrl.url_choose()
 
-        chosen_url = url_usage(url)
+        chosen_url = ortom()
+        chosen_url.url = url
         txt = chosen_url.url_parse()
 
         return render (request, "search_engine/index.html",
@@ -87,27 +94,76 @@ def userInput(request):
 def jamSholat(request):
     if request.method == "POST":
         jam = request.POST["jam"]
-        getTime = url_usage.time_choose(int(jam))
-        getDate = url_usage.date_choose()
+        getTime = ortom.time_choose(int(jam))
+        getDate = ortom.date_choose()
         jamsholat = getTime+", Date : "+getDate
         return render (request, "search_engine/index.html",{"p" : jamsholat})
+
 def getHadist(request):
     if request.method == "POST":
         request.POST["getHadist"]
-        hadistGet = url_usage.hadist_choose()
+        hadistGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h":hadistGet})
+
 def getNews(request):
     if request.method == "POST":
         request.POST["getHadist"]
-        newsGet = url_usage.hadist_choose()
+        newsGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h": newsGet})
 
-def nama(request):
-    nama = "Nma : Jo"
-    return render(request, "search_engine/index.html", {"nama":nama})
+def hw(request):
+    if request.method == 'POST':
+        hw = ortom()
+        hw.nama = "Hizbul Wathan"
+        hw.tahunBerdiri = "20 Desember 1918"
+        hw.ketuaUmum = "Endra Widyarsono"
+        hw.Pendiri = "K.H Ahmad Dahlan"
+        hw.url = "https://muhammadiyah.or.id/?s=hizbul+wathan"
+        hw.url_choose()
+        txt = hw.url_parse()
+        return render (request, "search_engine/index.html",
+        {"tahun":hw.tahunBerdiri,"pendiri": hw.Pendiri,"nama" :hw.nama, "ketua" : hw.ketuaUmum,"rangkuman" : txt})  
 
 
+def Aisyiyah(request):
+    if request.method == 'POST':
+        aisyiyah = ortom()
+        aisyiyah.nama = "Aisyiyah"
+        aisyiyah.tahunBerdiri = "Tahun Berdiri : 19 Mei 1917"
+        aisyiyah.ketuaUmum =    "Ketua Umun : Salmah Orbayinah"
+        aisyiyah.Pendiri =      "Pendiri : Siti Walidah"
+        aisyiyah.url = "https://muhammadiyah.or.id/?s=aisyiyah"
+        aisyiyah.url_choose()
+        txt = aisyiyah.url_parse()
+        return render (request, "search_engine/index.html",
+        {"tahun":aisyiyah.tahunBerdiri,"pendiri":aisyiyah.Pendiri,"nama":aisyiyah.nama,"ketua" : aisyiyah.ketuaUmum,"rangkuman" : txt})  
 
-def tampilkan_variabel(request):
-    nama_variabel = 'ini adalah isi dari variabel'
-    return render(request, 'nama_template.html', {'nama_variabel': nama_variabel})
+def ipm(request):
+    if request.method == 'POST':
+        ipm = ortom()
+        ipm.nama = "Ikatan Pelajar Muhammdiyah"
+        ipm.tahunBerdiri = "Tahun Berdir : 18 Juli 1961"
+        ipm.ketuaUmum = "Ketua Umum : Ainur Rosyid Adzikkri"
+        ipm.Pendiri = "Pendiri : Herman Helmi Farid Ma'ruf"
+        ipm.url = "https://muhammadiyah.or.id/?s=ipm"
+        ipm.url_choose()
+        txt = ipm.url_parse()
+        return render (request, "search_engine/index.html",
+        {"tahun":ipm.tahunBerdiri,"pendiri": ipm.Pendiri,"nama":ipm.nama,"ketua" : ipm.ketuaUmum,"rangkuman" : txt})  
+
+
+def pemudaMuhammadiyah(request):
+    if request.method == 'POST':
+        pm = ortom()
+        pm.nama = "Pemuda Muhammdiyah"
+        pm.tahunBerdiri = "2 Mei 1932"
+        pm.ketuaUmum = "Sunanto"
+        pm.Pendiri = "K.H Ahmad Dahlan"
+        pm.url = "https://muhammadiyah.or.id/?s=pemuda+muhammadiyah"
+        pm.url_choose()
+        txt = pm.url_parse()
+        return render (request, "search_engine/index.html", {"tahun":pm.tahunBerdiri,"nama":pm.nama,"pendiri": pm.Pendiri,"ketua" : pm.ketuaUmum,"rangkuman" : txt})  
+      
+
+
+        
