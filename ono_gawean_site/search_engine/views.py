@@ -134,5 +134,18 @@ def Aisyiyah(request):
         return render (request, "search_engine/index.html",
         {"txt" : txt})  
 
+def ipm(request):
+    if request.method == 'POST':
+        ipm = ortom()
+        ipm.tahunBerdiri = "18 Juli 1961"
+        ipm.ketuaUmum = "Ainur Rosyid Adzikkri"
+        ipm.Pendiri = "Herman Helmi Farid Ma'ruf"
+        ipm.url = "https://muhammadiyah.or.id/?s=ipm"
+        ipm.url_choose()
+        txt = ipm.url_parse()
+        return render (request, "search_engine/index.html",
+        {"txt" : txt})    
+
+
 
         

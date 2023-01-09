@@ -121,7 +121,7 @@
             <h2>Beberapa Organisasi dibawah Muhammadiyah</h2>
           </div>
           <div class="lessons">
-            
+
             <div class="lesson">
               <div class="lesson-icon">
                 <img src="{% static 'img/aisyiya-png.png' %}">
@@ -150,10 +150,15 @@
             <div class="lesson">
               <div class="lesson-icon">
                 <img src="{% static 'img/Logo-Ikatan-Pelajar-Muhammadiyah-Resmi.png' %}">
-              
               </div>
-              <p class="txt-contents">Ikatan Pelajar Muhammadiyah</p>
+              <div>
+              <form method="post" action="{% url 'ipm' %}">
+                {% csrf_token %}
+                <p class="txt-contents"><button type="submit"  name="ipm">Ikatan Pelajar Muhammadiyah</p>
+          
+                </form>
             </div>
+            </div> 
             <div class="lesson">
               <div class="lesson-icon">
                 <img src="{% static 'img/pm.png' %}">
