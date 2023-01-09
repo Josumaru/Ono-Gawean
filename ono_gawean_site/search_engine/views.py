@@ -9,7 +9,7 @@ class ortom():
     tahunBerdiri = 0000
     ketuaUmum = ""
     url = "url website"
-
+    Pendiri=""
 
 
     def url_choose(self):
@@ -115,13 +115,24 @@ def hw(request):
         hw = ortom()
         hw.tahunBerdiri = "20 Desember 1918"
         hw.ketuaUmum = "Endra Widyarsono"
+        hw.Pendiri = "K.H Ahmad Dahlan"
         hw.url = "https://muhammadiyah.or.id/?s=hizbul+wathan"
         hw.url_choose()
         txt = hw.url_parse()
         return render (request, "search_engine/index.html",
         {"txt" : txt})    
-        
 
+def Aisyiyah(request):
+    if request.method == 'POST':
+        aisyiyah = ortom()
+        aisyiyah.tahunBerdiri = "19 Mei 1917"
+        aisyiyah.ketuaUmum = "Salmah Orbayinah"
+        aisyiyah.Pendiri = "K.H Ahmad Dahlan"
+        aisyiyah.url = "https://muhammadiyah.or.id/?s=aisyiyah"
+        aisyiyah.url_choose()
+        txt = aisyiyah.url_parse()
+        return render (request, "search_engine/index.html",
+        {"txt" : txt})  
 
 
         
