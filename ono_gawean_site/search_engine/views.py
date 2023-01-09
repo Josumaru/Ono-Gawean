@@ -102,3 +102,12 @@ def getNews(request):
         newsGet = url_usage.hadist_choose()
         return render (request, "search_engine/index.html",{"h": newsGet})
 
+def nama(request):
+    nama = "Nma : Jo"
+    return render(request, "search_engine/index.html", {"nama":nama})
+
+
+
+def tampilkan_variabel(request):
+    nama_variabel = 'ini adalah isi dari variabel'
+    return render(request, 'nama_template.html', {'nama_variabel': nama_variabel})

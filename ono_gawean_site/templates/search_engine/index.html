@@ -14,27 +14,54 @@
 </head>
 <body>
     
+    <div onclick="hide_ortom()" id="ortom-overlay" class="lesson-wrapper">
+        <div class="container">
+          <div class="heading">
+            <h2>Beberapa Organisasi dibawah Muhammadiyah</h2>
+          </div>
+          <div class="lessons">
+            <div class="lesson">
+              <div class="lesson-icon">
+                <img onclick="show_aisyiyah()" src="{% static 'img/aisyiya-png.png' %}">
+              </div>
+              <p class="txt-contents"> Aisyiyah </p>
+            </div>
+            <div class="lesson">
+              <div class="lesson-icon">
+                <img src="{% static 'img/hw.png' %}">
+              </div>
+              <p class="txt-contents">Hizbul Wathan</p>
+            </div>
+            <div class="lesson">
+              <div class="lesson-icon">
+                <img src="{% static 'img/Logo-Ikatan-Pelajar-Muhammadiyah-Resmi.png' %}">
+              </div>
+              <p class="txt-contents">Ikatan Pelajar Muhammadiyah</p>
+            </div>
+            <div class="lesson">
+              <div class="lesson-icon">
+                <img src="{% static 'img/pm.png' %}">
+              </div>
+              <p class="txt-contents">Pemuda Muhammadiyah</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div  id="aisyiyah" class="ortom-div">
         <section class="hidden">
-            <h1>Ini Header</h1>
-            <p>Paragraf</p>
+          <img alt="nyai-ahmad" src="{%  static 'img/nyai-ahmad.jpg'  %}">
+            <h1></h1>
+            <p class="pobox">{{nama_variabel}}</p>
         </section>
-        
         <section class="hidden">
+          <img alt="logo" src="{% static 'img/logo.png' %}">
             <h2>Ini lebih besar</h2>
             <p>Paragraf</p>
         </section>
-        
         <section class="hidden">
-            
             <h2>Sama Juga</h2>
-            
         </section>
-
-   
-    
-
-    
-   
+      </div>   
     <nav class="sidebar close">
         <header>
             
@@ -53,10 +80,10 @@
             <div class="menu">
                 <li class="search-box">
                     <button type="submit" class="search-button"><i class='bx bx-search-alt icon' ></i></button>
-                    <form method="post" action="{% url 'userInput' %}" class="search-bar">
+                    <form method="post" action="{% url 'userInput' %}">
                       {% csrf_token %}
                         <div>
-                            <input class="a"type="text" placeholder="Search.." id="search" name="search">
+                            <input class="search-bar" type="text" placeholder="Search.." id="search" name="search">
                         </div>
                     </form>
                 </li>
@@ -70,15 +97,15 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a onclick="show_ortom()" href="#">
                             <i class="fa-sharp fa-solid fa-star-and-crescent icon "></i>
-                            <span class="text nav-text">Muhammadiyah</span>
+                            <span class="text nav-text">Ortom</span>
                         </a>
                     </li>
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a onclick="show_aisyiyah()" href="#">
                             <i class='bx bx-news icon'></i>
                             <span class="text nav-text">News</span>
                         </a>
@@ -132,9 +159,6 @@
     </nav>
     <div class="home">
         <header>
-
-
-
         </header>
           <div class="popup" id="popup">
            <div class="top-wrapper">
@@ -186,11 +210,11 @@
                           </a>
                           <a href="https://www.facebook.com/PersyarikatanMuhammadiyah/" class="btn facebook">
                             <span class="fa fa-facebook"></span>
-                          Facebook
+                            Facebook
                           </a>
                           <a href="https://twitter.com/muhammadiyah" class="btn twitter">
                           <span  class="fa fa-twitter"></span>
-                          Twitter
+                            Twitter
                         </a>
                         </div>
                   </body>
@@ -207,5 +231,46 @@
             </div>
         </div>
 </body>
+<footer class="footer">
+  <div class="container-foot">
+    <div class="row">
+      <div class="footer-col">
+        <h4>Ono-Gawean</h4>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Customer Service</a></li>
+          <li><a href="#">King Gilang</a></li>
+          <li><a href="#">Albedo</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">E-mail</a></li>
+          <li><a href="#">Phone Number</a></li>
+      </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Manual</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Paquito</a></li>
+          <li><a href="#">Argus</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <ul>
+          <li><a href="#"><i class="fa-brands fa-discord"></i> Discord</a></li>
+          <li><a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fa-brands fa-square-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>
 

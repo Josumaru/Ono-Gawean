@@ -21,6 +21,23 @@ const body = document.querySelector("body"),
       });
 
 
+
+
+function show_ortom(){
+    document.getElementById("ortom-overlay").style.display = "block"
+}
+function hide_ortom(){
+    document.getElementById("ortom-overlay").style.display = "none"
+}
+
+function show_aisyiyah(){
+    document.getElementById("aisyiyah").style.display = "block"
+}
+function hide_aisyiyah(){
+    document.getElementById("aisyiyah").style.display = "none"
+}
+
+
 function show(){
     document.getElementById("overlay").style.display = "block"
 }
