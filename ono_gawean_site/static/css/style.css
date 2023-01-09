@@ -28,6 +28,7 @@ body{
     --light-mode : #FFFFFF;
     --light-color : #D8FFdF;
     --overlay-color:#2f2e2e;
+    --overlay-text-color : green;
     --transition-02: all 0.2s ease;
     --transition-03: all 0.3s ease;
     --transition-04: all 0.4s ease;
@@ -66,6 +67,7 @@ body.dark{
   --light-mode : #3a3a3a;
   --light-color : #1d1d1d;
   --overlay-color:#FFFFFF;
+  --overlay-text-color : #1d1d1d;
   --transition-02: all 0.2s ease;
   --transition-03: all 0.3s ease;
   --transition-04: all 0.4s ease;
@@ -509,54 +511,45 @@ a {
   font-size: 17px;
 }
 .overlay{
-  
   top: 20%;
   position: fixed;
   display: none;
   border-radius: 20px;
-  width: 50%;
-  height: 25%;
+  width: calc(100% - 140px);
+  height: 50%;
   background: var(--overlay-color);
   padding-top: 1%;
-  margin-right: auto;
-  margin-left: auto ;
 }
 .jam{
   padding: 3%;
-  margin: 10;
+  margin: 10px;
   color: white;
   height: fit-content;
-  background-color: green;
+  background-color: var(--overlay-text-color);
   border: none;
   border-radius: 20px;
   width: 14%;
 }
 .overlay2{
-  margin: auto;
   top: 20%;
-  color: black;
+  position: fixed;
   display: none;
-  border-radius: 50px;
-  width: 50%;
-  height: 25%;
-  display: none;
-  background-color: rgb(255, 255, 255);
-  padding: 10%;
-  position: absolute;
+  border-radius: 20px;
+  width: calc(100% - 140px);
+  height: 50%;
+  background: var(--overlay-color);
+  padding-top: 1%;
+  
 }
 .overlay3{
-  margin: auto;
   top: 20%;
-  color: black;
+  position: fixed;
   display: none;
-  padding: 10%;
-  border-radius: 50px;
-  width: 50%;
-  height: 30%;
-  display: none;
-  background-color: rgb(255, 255, 255);
-  padding: 10%;
-  position:fixed;
+  border-radius: 20px;
+  width: calc(100% - 140px);
+  height: 50%;
+  background: var(--overlay-color);
+  padding-top: 1%;
 }
 .top{
   margin: auto;
@@ -573,14 +566,22 @@ a {
   position:fixed;
 }
 .overlay4{
+  top: 20%;
+  position: fixed;
   display: none;
+  border-radius: 20px;
+  width: 200px;
+  height: 50%;
+  background: var(--overlay-color);
+  padding-top: 1%;
+  margin-left: 250px;
 }
 .hadist{
   padding: 3%;
   margin: 10;
   color: white;
   height: fit-content;
-  background-color: green;
+  background-color: var(--overlay-text-color);
   width: 20%;
   border: none;
   border-radius: 50px;
@@ -592,7 +593,7 @@ a {
   color: white;
   margin: 20px;
   border-radius: 50px;
-  background-color: green;
+  background-color:var(--overlay-text-color);
 }
 
 
@@ -600,21 +601,25 @@ a {
   top: 0;
 }
 
-.creator1 li{
+
+.creator{
+  color: var(--background-color);
+}
+/* .creator li{
   float:left;
   padding: 5px, 10px;
   margin: 20px;
 }
-.creator1{
+.creator{
   padding: 10px, 0px;
 }
-.creator2 {
+.creator {
 padding: 50px;
 }
-.creator2 li{
+.creator li{
   padding: 5px, 10px;
   margin: 20px;
-}
+} */
 
 .btn {
   padding: 12px 24px;
@@ -645,4 +650,22 @@ padding: 50px;
 
 .link p {
   margin: 10px 0;
+}
+
+section{
+  color: var(--text-color);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+
+.hidden {
+    opacity: 0;
+    transition: all 5s;
+}
+
+.show {
+    opacity: 1;
 }

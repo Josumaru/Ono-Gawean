@@ -1,3 +1,26 @@
+const body = document.querySelector("body"),
+      sidebar = body.querySelector(".sidebar"),
+      toggle = body.querySelector(".toggle"),
+      searchButton = body.querySelector(".search-button"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+      searchButton.addEventListener("click", () =>{
+          sidebar.classList.toggle("close");
+      });
+      toggle.addEventListener("click", () =>{
+          sidebar.classList.toggle("close");
+      });
+      modeSwitch.addEventListener("click", () =>{
+        body.classList.toggle("dark");
+
+        if(body.classList.contains("dark")){
+            modeText.innerText = "Light Mode"
+        }else{
+            modeText.innerText = "Dark Mode"
+        }
+      });
+
+
 function show(){
     document.getElementById("overlay").style.display = "block"
 }
@@ -22,3 +45,18 @@ function show_news(){
 function hide_news(){
     document.getElementById("overlay4").style.display = "none"
 }
+
+const observer = new IntersectionObserver((entries)=> {
+    entries.forEach((entry) => {
+        console.log(entry)
+        if(entry.isIntersecting){
+            entry.target.classList.add('show')
+        }else{
+            entry.target.classList.remove('show')
+        }
+    });
+});
+
+
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));

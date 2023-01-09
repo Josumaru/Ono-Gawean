@@ -9,10 +9,32 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/bd92ab6d5a.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/myscript.js' %}"></script>
+    <script defer src="{% static 'js/myscript.js' %}"></script>
     <title>Ono-Gawean</title>
 </head>
 <body>
+    
+        <section class="hidden">
+            <h1>Ini Header</h1>
+            <p>Paragraf</p>
+        </section>
+        
+        <section class="hidden">
+            <h2>Ini lebih besar</h2>
+            <p>Paragraf</p>
+        </section>
+        
+        <section class="hidden">
+            
+            <h2>Sama Juga</h2>
+            
+        </section>
+
+   
+    
+
+    
+   
     <nav class="sidebar close">
         <header>
             
@@ -80,7 +102,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="#">
+                        <a onclick="show_about()" href="#">
                             <i class='bx bx-user-circle icon'></i>
                             <span class="text nav-text">About</span>
                         </a>
@@ -108,46 +130,25 @@
             </div>
         </div>
     </nav>
-    <script>
-      const body = document.querySelector("body"),
-      sidebar = body.querySelector(".sidebar"),
-      toggle = body.querySelector(".toggle"),
-      searchButton = body.querySelector(".search-button"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
-      searchButton.addEventListener("click", () =>{
-          sidebar.classList.toggle("close");
-      });
-      toggle.addEventListener("click", () =>{
-          sidebar.classList.toggle("close");
-      });
-      modeSwitch.addEventListener("click", () =>{
-        body.classList.toggle("dark");
-
-        if(body.classList.contains("dark")){
-            modeText.innerText = "Light Mode"
-        }else{
-            modeText.innerText = "Dark Mode"
-        }
-      });
-    </script>
-    <section class="home">
+    <div class="home">
         <header>
-            
+
+
+
         </header>
           <div class="popup" id="popup">
            <div class="top-wrapper">
               <div class="container">
                 <div class="content">
-      
-                  <h1>Muhammadiyah</h1>
-                  <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
-                  <p>{{search}}</p>
-                  <div>
+                    
+                   <h1>Muhammadiyah</h1>
+                   <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
+                
+                   <p>{{search}}</p>
+                   <div>
                     <p for="search">Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
-                  </div>
+                   </div>
                 </div>
-                  
                   <form method="post" action="{% url 'jamSholat' %}" id="overlay" class="overlay">
                     {% csrf_token %}
                     <button onclick="hide()" type="button"class="jam">Close</button>
@@ -204,7 +205,7 @@
                 </div>
               </div>
             </div>
-    </section>
+        </div>
 </body>
 </html>
 
