@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -132,7 +133,10 @@
                 <img src="{% static 'img/hw.png' %}">
               
               </div>
-              <p class="txt-contents">Hizbul Wathan</p>
+              <form method="post" action="{% url 'hw' %}" class="search-bar">
+                {% csrf_token %}
+                <button type="submit" class="txt-contents">Hizbul Wathan</p>
+                <div>
             </div>
             <div class="lesson">
               <div class="lesson-icon">

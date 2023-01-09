@@ -79,10 +79,12 @@ def userInput(request):
         userIn = request.POST["search"]
         search = userIn.replace(" ","+")
 
-        baseUrl = ortom(f"https://muhammadiyah.or.id/?s={search}")
+        baseUrl = ortom()
+        baseUrl.url = f"https://muhammadiyah.or.id/?s={search}"
         url = baseUrl.url_choose()
 
-        chosen_url = ortom(url)
+        chosen_url = ortom()
+        chosen_url.url = url
         txt = chosen_url.url_parse()
 
         return render (request, "search_engine/index.html",
@@ -108,14 +110,17 @@ def getNews(request):
         newsGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h": newsGet})
 
-def hw():
-    hw = ortom()
-    hw.tahunBerdiri = "20 Desember 1918"
-    hw.ketuaUmum = "Endra Widyarsono"
-    hw.url = "https://muhammadiyah.or.id/?s=hizbul+wathan"
-    hw.url_choose()
-    hw.url_parse()
+def hw(request):
+    if request.method == 'POST':
+        hw = ortom()
+        hw.tahunBerdiri = "20 Desember 1918"
+        hw.ketuaUmum = "Endra Widyarsono"
+        hw.url = "https://muhammadiyah.or.id/?s=hizbul+wathan"
+        hw.url_choose()
+        txt = hw.url_parse()
+        return render (request, "search_engine/index.html",
+        {"txt" : txt})    
 
 def aisyiyah():
-    aisyiyah = ortom
+    aisyiyah = ortom()
         
