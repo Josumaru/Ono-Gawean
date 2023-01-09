@@ -121,6 +121,6 @@ def hw(request):
         return render (request, "search_engine/index.html",
         {"txt" : txt})    
 
-def aisyiyah():
-    aisyiyah = ortom()
+
+
         
