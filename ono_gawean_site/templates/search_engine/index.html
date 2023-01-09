@@ -162,10 +162,15 @@
             <div class="lesson">
               <div class="lesson-icon">
                 <img src="{% static 'img/pm.png' %}">
-                
               </div>
-              <p class="txt-contents">Pemuda Muhammadiyah</p>
-            </div>
+                <div>
+                  <form method="post" action="{% url 'pm' %}">
+                    {% csrf_token %}
+                    <p class="txt-contents"><button type="submit"  name="pm">Pemuda Muhammadiyah</p>
+              
+                    </form>
+                </div>
+            </div>  
           </div>
         </div>
       </div>      

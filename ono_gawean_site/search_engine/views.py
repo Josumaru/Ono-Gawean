@@ -146,6 +146,17 @@ def ipm(request):
         return render (request, "search_engine/index.html",
         {"txt" : txt})    
 
+def pemudaMuhammadiyah(request):
+    if request.method == 'POST':
+        pm = ortom()
+        pm.tahunBerdiri = "2 Mei 1932"
+        pm.ketuaUmum = "Sunanto"
+        pm.Pendiri = "K.H Ahmad Dahlan"
+        pm.url = "https://muhammadiyah.or.id/?s=pemuda+muhammadiyah"
+        pm.url_choose()
+        txt = pm.url_parse()
+        return render (request, "search_engine/index.html",
+        {"txt" : txt})       
 
 
         
