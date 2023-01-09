@@ -133,9 +133,9 @@
                 <img src="{% static 'img/hw.png' %}">
               
               </div>
-              <form method="post" action="{% url 'hw' %}" class="search-bar">
+              <form method="post" action="{% url 'hw' %}">
                 {% csrf_token %}
-                <button class="txt-contents" name="hw">Hizbul Wathan</p>
+                <button type="submit" class="txt-contents" name="hw">Hizbul Wathan</p>
                 <div>
             </div>
             <div class="lesson">
