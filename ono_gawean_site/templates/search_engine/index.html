@@ -131,13 +131,14 @@
             <div class="lesson">
               <div class="lesson-icon">
                 <img src="{% static 'img/hw.png' %}">
-              
+          
               </div>
               <div>
               <form method="post" action="{% url 'hw' %}">
                 {% csrf_token %}
                 <p class="txt-contents"><button type="submit"  name="hw">Hizbul Wathan</p>
                 </form>
+            </div>
             </div>
             <div class="lesson">
               <div class="lesson-icon">
