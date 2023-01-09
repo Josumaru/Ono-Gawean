@@ -120,6 +120,7 @@ def hw(request):
         txt = hw.url_parse()
         return render (request, "search_engine/index.html",
         {"txt" : txt})    
+        
 
 
 
