@@ -5,9 +5,13 @@ import urllib,html2text,bs4,random
 def index(request):
     return render(request, "search_engine/index.html")
 
-class url_usage():
-    def __init__(self, url):
-        self.url = url
+class ortom():
+    tahunBerdiri = 0000
+    ketuaUmum = ""
+    url = "url website"
+
+
+
     def url_choose(self):
         request = urllib.request.Request(self.url)
         response = urllib.request.urlopen(request)
@@ -16,8 +20,7 @@ class url_usage():
         urlText = parsedhtml.findAll("a",href=True)
         randomNumber = random.randint(170,190)
         getUrl = (urlText[randomNumber])
-        url = getUrl["href"]
-        return url
+        self.url = getUrl["href"]
 
     def url_parse(self):
         request = urllib.request.Request(self.url)
@@ -76,10 +79,12 @@ def userInput(request):
         userIn = request.POST["search"]
         search = userIn.replace(" ","+")
 
-        baseUrl = url_usage(f"https://muhammadiyah.or.id/?s={search}")
+        baseUrl = ortom()
+        baseUrl.url = f"https://muhammadiyah.or.id/?s={search}"
         url = baseUrl.url_choose()
 
-        chosen_url = url_usage(url)
+        chosen_url = ortom()
+        chosen_url.url = url
         txt = chosen_url.url_parse()
 
         return render (request, "search_engine/index.html",
@@ -88,18 +93,35 @@ def userInput(request):
 def jamSholat(request):
     if request.method == "POST":
         jam = request.POST["jam"]
-        getTime = url_usage.time_choose(int(jam))
-        getDate = url_usage.date_choose()
+        getTime = ortom.time_choose(int(jam))
+        getDate = ortom.date_choose()
         jamsholat = getTime+", Date : "+getDate
         return render (request, "search_engine/index.html",{"p" : jamsholat})
+
 def getHadist(request):
     if request.method == "POST":
         request.POST["getHadist"]
-        hadistGet = url_usage.hadist_choose()
+        hadistGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h":hadistGet})
+
 def getNews(request):
     if request.method == "POST":
         request.POST["getHadist"]
-        newsGet = url_usage.hadist_choose()
+        newsGet = ortom.hadist_choose()
         return render (request, "search_engine/index.html",{"h": newsGet})
 
+def hw(request):
+    if request.method == 'POST':
+        hw = ortom()
+        hw.tahunBerdiri = "20 Desember 1918"
+        hw.ketuaUmum = "Endra Widyarsono"
+        hw.url = "https://muhammadiyah.or.id/?s=hizbul+wathan"
+        hw.url_choose()
+        txt = hw.url_parse()
+        return render (request, "search_engine/index.html",
+        {"txt" : txt})    
+        
+
+
+
+        

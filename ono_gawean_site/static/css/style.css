@@ -341,3 +341,47 @@ padding: 50px;
 .link p {
   margin: 10px 0;
 }
+
+.lesson-wrapper {
+  height: 500px;
+  padding-bottom: 80px;
+  text-align:center;
+  color: white;
+}
+
+.heading {
+  padding-top: 60px;
+  padding-bottom: 30px;
+  color:white;
+}
+
+.heading h2 {
+  font-weight: normal;
+  color: white;
+}
+
+.lesson {
+  float: left;
+  width: 25%;
+}
+
+
+.lesson-icon{
+  position:relative;
+}
+
+.lesson-icon p {
+  color:white;
+  width:100%;
+  position:absolute;
+  top:90px;
+}
+
+
+.txt-contents {
+  color:white;
+  width: 80%;
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 15px;
+}
