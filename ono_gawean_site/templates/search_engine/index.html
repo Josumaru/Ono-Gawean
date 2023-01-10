@@ -13,6 +13,7 @@
     <title>Ono-Gawean</title>
 </head>
 <body>
+  5
     
   <div onclick="hide_ortom()" id="ortom-overlay" class="lesson-wrapper">
     <div class="container">
@@ -70,7 +71,9 @@
 
   <div  id="aisyiyah" class="ortom-div">
     <section class="hidden">
+        <p>{{txt}}</p>
         <h1>{{nama}}</h1>
+        <br>
         <p class="pobox">{{pendiri}}</p>
       </section>
       <section class="hidden">
@@ -80,7 +83,9 @@
       <p class="pobox">{{ketua}}</p>
     </section>
     <section class="hidden">
-        <p>{{rangkuman}}</p>
+      <p>{{art}}{{nama}}</p>
+      <br>
+      <p>{{rangkuman}}</p>
     </section>
   </div>  
   
@@ -128,7 +133,7 @@
                 </ul>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a onclick="show_news(),hide_aisyiyah(),hide(),hide_hadist(),hide_ortom(),hide_news(),hide_about()" href="#">
+                        <a onclick="show_news(),hide_aisyiyah(),hide(),hide_hadist(),hide_ortom(),hide_about()" href="#">
                             <i class='bx bx-news icon'></i>
                             <span class="text nav-text">News</span>
                         </a>
@@ -186,14 +191,14 @@
            <div class="top-wrapper">
               <div class="container">
                 <div class="content">
-                    
-                   <h1>Muhammadiyah</h1>
-                   <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
+                  
+                  <h1>Muhammadiyah</h1>
+                  <h1>BELAJAR MENJADI LEBIH ISLAMI<h1>
                 
-                   <p>{{search}}</p>
-                   <div>
-                    <p for="search">Ketik yang ingin kamu ketahui tentang Muhammadiyah !</p>
-                   </div>
+                  <p>{{search}}</p>
+                  <div>
+                    <p for="search">Apa yang ingin kamu ketahui tentang Muhammadiyah ?</p>
+                  </div>
                 </div>
                   <form method="post" action="{% url 'jamSholat' %}" id="overlay" class="overlay">
                     {% csrf_token %}
@@ -241,13 +246,14 @@
                         </div>
                   </body>
                   </form>
-                  <form method="post" action="{% url 'getHadist' %}" id="overlay4" class="overlay2">
+                  <form method="post" action="{% url 'userInput' %}" id="overlay4" class="overlay2">
                     {% csrf_token %}
                     <button onclick="hide_news()" type="button"class="hadist">Close</button>
-                    <button id ="overlay4" type="submit" name="getHadist" class="hadist">Al Bukhari</button>
-                    <p class="hadist-output">{{h}}</p>
-                  </form>
-                  <p class="content">{{txt}}</p>      
+                    <button id ="overlay4" type="submit" name="search" class="hadist" value="muktamar 48">Muktamar</button>
+                    <button id ="overlay4" type="submit" name="search" class="hadist" value="universitas muhammadiyah surakarta">UMS</button>
+                    <button id ="overlay4" type="submit" name="search" class="hadist" value="Solo">Solo</button>
+                    <p class="hadist-output">{{txt}}</p>
+                  </form>   
                 </div>
               </div>
             </div>
@@ -259,16 +265,15 @@
       <div class="footer-col">
         <h4>Ono-Gawean</h4>
         <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Customer Service</a></li>
-          <li><a href="#">King Gilang</a></li>
-          <li><a href="#">Albedo</a></li>
+          <li><a onclick ="show_abou()" href="#">About us</a></li>
+          <li><a href="https://wa.me/+6281278460128">Customer Service</a></li>
+ 
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="#">WhatsApp</a></li>
+          <li><a href="https://wa.me/+6281278460128">WhatsApp</a></li>
           <li><a href="#">E-mail</a></li>
           <li><a href="#">Phone Number</a></li>
       </ul>
@@ -277,10 +282,8 @@
         <h4>Help</h4>
         <ul>
           <li><a href="#">Manual</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Paquito</a></li>
-          <li><a href="#">Argus</a></li>
-        </ul>
+          <li><a href="https://wa.me/+6281278460128">FAQ</a></li>
+    
       </div>
       <div class="footer-col">
         <h4>Follow us</h4>

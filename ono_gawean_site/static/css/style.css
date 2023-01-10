@@ -90,7 +90,7 @@ body.dark{
     align-items: center;
 }
 
-/* ======  ======== */
+
 .search-button{
     border: none;
     background: transparent;
@@ -320,7 +320,7 @@ body.dark .switch::before{
     width: calc(100% - 98px);
 }
 
-.sidebar.close ~ .lesson-wrapper{
+.sidebar.close ~ .ortom-div{
   left: 98px;
   width: calc(100% - 98px);
 }
@@ -333,16 +333,6 @@ li {
 a {
   text-decoration: none;
 }
-
-
-
-/* header {
-  height: 67px;
-  width: 100%;
-  background-color: var(--main-color);
-  position: fixed;
-  z-index:10; */
-  
 
 
 .logo {
@@ -362,25 +352,11 @@ a {
   margin: 0 20px;
   padding: 0px 20px;
 }
-/* .hcl-left li{
-  float: left;
-  left: 200px;
-  position: relative;
-  bottom: 67px;
-  background-color: rgba(255, 255, 255, 0.3);
-  transition:all 0.5s;
-  float: left;
-  width: 15%;
-  margin: 0 20px;
-  padding: 0px 20px;
-} */
 
 .hcl li:hover {
   background-color: rgba(97, 249, 9, 0.64);
 }
-/* .hcl-left li:hover {
-  background-color: rgba(97, 249, 9, 0.64);
-} */
+
 .hcl li a{
   line-height: 65px;
   padding-left: 25px;
@@ -450,35 +426,6 @@ a {
   
 }
 
-/*
-.search-bar input{
-  margin: auto;
-  background: transparent;
-  outline:0;
-  outline: none;
-  padding: 24px 20px;
-  font-size: 20px;
-  color: white;
-}
-::placeholder{
-  color: green;
-  top: 0;
-}
-.search-bar button img{
-  width: 25px;
-  
-}
-.search-bar button{
-  margin-left: 14px;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  border: 0;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  background-color: green;
-  cursor: pointer;
-} */
 
 .topnav a:hover {
   background-color: #ddd;
@@ -498,15 +445,7 @@ a {
   color: var(--background-color);
   border: 0;
 }
-/* .top-bar-left{
-  padding: auto;
-  left: 20%;
-  height: 65px;
-  background-color: transparent;
-  color: white;
-  border: 0;
 
-} */
 .topnav input{
   text-align: center;
   padding: 6px;
@@ -685,7 +624,7 @@ section{
 
 .lesson-wrapper {
   position: relative;
-  left: 88px;
+  margin: auto;
   width: calc(100% - 88px);
   transition: var(--transition-05);
   display: none;
@@ -723,17 +662,6 @@ section{
   top:90px;
 }
 
-
-/* .txt-contents {
-  border: none;
-  transition: var(--transition-03);
-  width: 80%;
-  display: inline-block;
-  margin-top: 20px;
-  font-size: 15px;
-  color: var(--text-color);
-} */
-
 .button-lesson{
   color: var(--text-color);
   border: none;
@@ -765,7 +693,9 @@ section{
 }
 
 .ortom-div{
-  position: flex;
+  position: relative;
+  left: 88px;
+  width: calc(100% - 88px);
   display: block;
 }
 

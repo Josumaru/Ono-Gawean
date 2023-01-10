@@ -6,10 +6,10 @@ def index(request):
     return render(request, "search_engine/index.html")
 
 class ortom():
-    nama =""
+    nama = ""
     tahunBerdiri = 0000
     ketuaUmum = ""
-    url = "url website"
+    url = "https://muhammadiyah.or.id/?s=l"
     Pendiri=""
 
 
@@ -78,18 +78,14 @@ class ortom():
 def userInput(request):
     if request.method == "POST":
         userIn = request.POST["search"]
-        search = userIn.replace(" ","+")
+        masukan = userIn.replace(" ","+")
+        search = ortom()
+        search.url = f"https://muhammadiyah.or.id/?s={masukan}"
+        search.url_choose()
+        txt = search.url_parse()
+        return render (request, "search_engine/index.html",{"txt":txt})
 
-        baseUrl = ortom()
-        baseUrl.url = f"https://muhammadiyah.or.id/?s={search}"
-        url = baseUrl.url_choose()
-
-        chosen_url = ortom()
-        chosen_url.url = url
-        txt = chosen_url.url_parse()
-
-        return render (request, "search_engine/index.html",
-        {"txt" : txt})
+    
 
 def jamSholat(request):
     if request.method == "POST":
@@ -113,6 +109,7 @@ def getNews(request):
 
 def hw(request):
     if request.method == 'POST':
+        art = "Artikel Terkait : "
         hw = ortom()
         hw.nama = "Hizbul Wathan"
         hw.tahunBerdiri = "20 Desember 1918"
@@ -122,11 +119,12 @@ def hw(request):
         hw.url_choose()
         txt = hw.url_parse()
         return render (request, "search_engine/index.html",
-        {"tahun":hw.tahunBerdiri,"pendiri": hw.Pendiri,"nama" :hw.nama, "ketua" : hw.ketuaUmum,"rangkuman" : txt})  
+        {"tahun":hw.tahunBerdiri,"pendiri": hw.Pendiri,"ketua" : hw.ketuaUmum,"nama":hw.nama,"rangkuman" : txt,"art":art})  
 
 
 def Aisyiyah(request):
     if request.method == 'POST':
+        art = "Artikel Terkait : "
         aisyiyah = ortom()
         aisyiyah.nama = "Aisyiyah"
         aisyiyah.tahunBerdiri = "Tahun Berdiri : 19 Mei 1917"
@@ -136,24 +134,26 @@ def Aisyiyah(request):
         aisyiyah.url_choose()
         txt = aisyiyah.url_parse()
         return render (request, "search_engine/index.html",
-        {"tahun":aisyiyah.tahunBerdiri,"pendiri":aisyiyah.Pendiri,"nama":aisyiyah.nama,"ketua" : aisyiyah.ketuaUmum,"rangkuman" : txt})  
+        {"tahun":aisyiyah.tahunBerdiri,"pendiri":aisyiyah.Pendiri,"ketua" : aisyiyah.ketuaUmum,"rangkuman" : txt, "art":art, "nama" : aisyiyah.nama})  
 
 def ipm(request):
     if request.method == 'POST':
         ipm = ortom()
-        ipm.nama = "Ikatan Pelajar Muhammdiyah"
-        ipm.tahunBerdiri = "Tahun Berdir : 18 Juli 1961"
+        art = "Artikel Terkait : "
+        ipm.nama = "Ikatan Pelajar Muhammadiyah"
+        ipm.tahunBerdiri = " Tahun Berdir : 18 Juli 1961"
         ipm.ketuaUmum = "Ketua Umum : Ainur Rosyid Adzikkri"
         ipm.Pendiri = "Pendiri : Herman Helmi Farid Ma'ruf"
         ipm.url = "https://muhammadiyah.or.id/?s=ipm"
         ipm.url_choose()
         txt = ipm.url_parse()
         return render (request, "search_engine/index.html",
-        {"tahun":ipm.tahunBerdiri,"pendiri": ipm.Pendiri,"nama":ipm.nama,"ketua" : ipm.ketuaUmum,"rangkuman" : txt})  
+        {"tahun":ipm.tahunBerdiri,"pendiri": ipm.Pendiri,"nama":ipm.nama,"ketua" : ipm.ketuaUmum,"rangkuman" : txt,"art":art})  
 
 
 def pemudaMuhammadiyah(request):
     if request.method == 'POST':
+        art = "Artikel Terkait : "
         pm = ortom()
         pm.nama = "Pemuda Muhammdiyah"
         pm.tahunBerdiri = "2 Mei 1932"
@@ -162,7 +162,7 @@ def pemudaMuhammadiyah(request):
         pm.url = "https://muhammadiyah.or.id/?s=pemuda+muhammadiyah"
         pm.url_choose()
         txt = pm.url_parse()
-        return render (request, "search_engine/index.html", {"tahun":pm.tahunBerdiri,"nama":pm.nama,"pendiri": pm.Pendiri,"ketua" : pm.ketuaUmum,"rangkuman" : txt})  
+        return render (request, "search_engine/index.html", {"art":art,"nama": pm.nama,"tahun":pm.tahunBerdiri,"pendiri": pm.Pendiri,"ketua" : pm.ketuaUmum,"rangkuman" : txt})  
       
 
 
